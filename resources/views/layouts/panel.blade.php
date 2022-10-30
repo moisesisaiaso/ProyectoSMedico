@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>
-    Argon Dashboard - Free Dashboard for Bootstrap 4 by Creative Tim
+     {{config('app.name')}}
   </title>
   <!-- Favicon -->
   <link href="{{asset('img/brand/favicon.png')}}" rel="icon" type="image/png">
@@ -27,7 +27,7 @@
       </button>
       <!-- Brand -->
       <a class="navbar-brand pt-0" href="./index.html">
-        <img src="{{asset('img/brand/EAPA.png')}}" class="navbar-brand-img" alt="...">
+        <img src="{{asset('img/brand/bluee.png')}}" class="navbar-brand-img" alt="...">
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
@@ -86,7 +86,7 @@
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="./index.html">
-                <img src="{{asset('img/brand/blue.png')}}">
+                <img src="{{asset('img/brand/bluee.png')}}">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -98,9 +98,8 @@
           </div>
         </div>
         <!-- Form -->
-        
         <!-- Navigation --> 
-        @include('includes.panel.menu');
+        @include('includes.panel.menu')
       </div>
     </div>
   </nav>
@@ -166,37 +165,13 @@
     </nav>
     <!-- End Navbar -->
     <!-- Header -->
-    <div class="header bg-gradient-primary pb-8 pt-4 pt-md-6">
+    <div class="header bg-gradient-primary-change pb-8 pt-4 pt-md-6">
       
     </div>
     <div class="container-fluid mt--7">
       @yield('content')
       <!-- Footer -->
-      <footer class="footer">
-        <div class="row align-items-center justify-content-xl-between">
-          <div class="col-xl-6">
-            <div class="copyright text-center text-xl-left text-muted">
-              &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
-            </div>
-          </div>
-          <div class="col-xl-6">
-            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      @include('includes.panel.footer')
     </div>
   </div>
   <!--   Core   -->
