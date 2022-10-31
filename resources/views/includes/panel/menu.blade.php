@@ -47,7 +47,6 @@
             </a>
             <form action="{{route('logout')}}" method="POST" style="display: none;" id="formLogout">
             @csrf
-
             </form>
           </li>
 </ul>
