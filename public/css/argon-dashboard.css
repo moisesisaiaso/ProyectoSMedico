@@ -20775,3 +20775,20 @@ pre > code.highlight {
 
 /* new styles*/
 
+::-webkit-scrollbar {
+    width: 12px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent !important;
+    border-radius: 50px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        80deg,
+        rgba(207, 207, 207, 1) 0%,
+        rgb(62 146 155) 100%
+    ) !important;
+    border-radius: 50px !important;
+}
