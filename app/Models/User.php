@@ -12,6 +12,16 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'users';
+
+    //Relación One to Many / de uno a muchos.
+    //un usuario puede crear(o tener) muchos pacientes.
+    public function pacientes(){
+         return $this->hasMany('App\Models\Paciente');
+    }
+    
+    
+    
     /**
      * The attributes that are mass assignable.
      *
