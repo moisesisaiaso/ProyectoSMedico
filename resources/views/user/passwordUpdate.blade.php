@@ -1,5 +1,5 @@
 @extends('layouts.panelBasic')
-@section('title', 'configuracion')
+@section('title', 'password')
 
 @section('content')
 
@@ -32,40 +32,25 @@
                 </div>
 
                @endif
-              <form role="form" method="POST" action="{{ route('update.user') }}" enctype="multipart/form-data"> <!-- enctype="multipart/form-data" esto me permite mandar archivos por el formulario -->
+              <form role="form" method="POST" action="{{ route('updatePassword.user') }}">
                 @csrf
-
                 <div class="form-group">
-                 <!-- Avatar Form -->
-                 @include('includes.panel.avatarForm')
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
-                      <span class="input-group-text bg-secondary"><i class="ni ni-hat-3"></i></span>
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control bg-secondary" placeholder="Name" type="text" name="name" value="{{Auth::user()->name}}" required autocomplete="name" autofocus>
+                    <input class="form-control" placeholder="Password" type="password" name="password" required autocomplete="new-password" value="{{Auth::user()->password}}">
                   </div>
                 </div>
                 <div class="form-group">
-                  <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
-                      <span class="input-group-text bg-secondary">
-                        <i class="ni ni-email-83"></i>
-                      </span>
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control bg-secondary" placeholder="Email" type="email" name="email" value="{{Auth::user()->email}}" required autocomplete="email">  <!-- {{Auth::user()->email}} esto me permite aaceder al objeto del usuario autenticado y atraves de este puedo obtener los valores de sus propiedades -->
+                    <input class="form-control" placeholder="Repeat Password" type="password" name="password_confirmation" required autocomplete="new-password" value="{{Auth::user()->password_confirmation}}">
                   </div>
                 </div>
-                <div class="form-group">
 
-                  <div class="input-group input-group-alternative mb-3">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="image_path" lang="en" name="image_path">
-                      <label class="custom-file-label" for="customFileLang">Selecciona una image de Perfil</label>
-                    </div>
-                  </div>
-                </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-outline-success mt-4">Guardar cambios</button>
                 </div>

@@ -48,7 +48,12 @@
                   </label>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary my-4">Empezar</button>
+                <button type="submit" class="btn  btn-lg btn-block my-4" style="background-color: #525f7f; color: white">
+                  <span class="btn-inner--icon"><i class="ni ni-send"></i></span>
+                  <span class="btn-inner--text">Empezar</span>
+                  
+                </button>
+                  
                 </div>
               </form>
             </div>

@@ -59,7 +59,11 @@
                 </div>
 
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary mt-4">Create account</button>
+                <button type="submit" class="btn  btn-lg btn-block my-4" style="background-color: #525f7f; color: white">
+                  <span class="btn-inner--icon"><i class="ni ni-send"></i></span>
+                  <span class="btn-inner--text">Crear cuenta</span>
+                  
+                </button>
                 </div>
               </form>
             </div>

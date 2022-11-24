@@ -53,13 +53,13 @@
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="{{route('register')}}">
                 <i class="ni ni-circle-08"></i>
-                <span class="nav-link-inner--text">Register</span>
+                <span class="nav-link-inner--text">Registro</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="{{route('login')}}">
                 <i class="ni ni-key-25"></i>
-                <span class="nav-link-inner--text">Login</span>
+                <span class="nav-link-inner--text">Iniciar sesión</span>
               </a>
             </li>
             
@@ -92,14 +92,14 @@
         <div class="row align-items-center justify-content-xl-between">
           <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
-              © 2022 <a href="{{url('/')}}" class="font-weight-bold ml-1">{{config('app.name')}}</a>
+              © 2022 <a href="{{url('/')}}" class="font-weight-bold ml-1" style="color: #33d7d4">{{config('app.name')}}</a>
             </div>
           </div>
           <div class="col-xl-6">
             <ul class="nav nav-footer justify-content-center justify-content-xl-end">
               
               <li class="nav-item">
-                <a href="#" class="nav-link" target="_blank">Quiénes somos?</a>
+                <a href="#" class="nav-link text-muted" target="_blank">Quiénes somos?</a>
               </li>
               
               

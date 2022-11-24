@@ -16,6 +16,7 @@
   <link href="{{asset('js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="{{asset('css/argon-dashboard.css?v=1.1.2')}}" rel="stylesheet" />
+  <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 
 <body class="">
@@ -23,32 +24,38 @@
     <!-- Navbar -->
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
+        @if(isset($titulo))
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{route('config.user')}}"> {{$titulo}} </a>
-       
-        <!-- Form -->
-        @if($titulo != 'configuracion')
-        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-          <div class="form-group mb-0">
-            <div class="input-group input-group-alternative">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-search"></i></span>
-              </div>
-              <input class="form-control" placeholder="Search" type="text">
-            </div>
-          </div>
-        </form>
+        <div>
+          <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{route('config.user')}}">@yield('title')</a>
+          
+          <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" style="margin-left: 40px" href="{{route('home')}}"><img  src= "{{asset('img/brand/pacientes.svg')}}"></img></a>
+        </div>
+        
         @else
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{route('home')}}"> Home </a>
+        <!-- Brand -->
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{route('home')}}">@yield('title')</a>
+        <!-- Form -->
+         
+          <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+            <div class="form-group mb-0">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-search"></i></span>
+                </div>
+                <input class="form-control" placeholder="Search" type="text">
+              </div>
+            </div>
+          </form>
         @endif
         <!-- User  para escritorio-->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
           <li class="nav-item dropdown">
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
-                <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="{{asset('img/theme/team-4-800x800.jpg')}}">
-                </span>
+                <!-- Avatar -->
+                @include('includes.panel.avatarPanel')
+                
                 <div class="media-body ml-2 d-none d-lg-block">
                   <span class="mb-0 text-sm  font-weight-bold">Dr.{{auth()->user()->name}} </span>
                 </div>

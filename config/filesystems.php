@@ -42,6 +42,20 @@ return [
             'visibility' => 'public',
         ],
 
+        'users' => [ // con esto genero discos virtuales que me permiten almacenar archivos de imagenes en este caso y de manera protegida
+            'driver' => 'local',
+            'root' => storage_path('app/users'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
+        'images' => [ // con esto genero discos virtuales que me permiten almacenar archivos de imagenes en este caso y de manera protegida
+            'driver' => 'local',
+            'root' => storage_path('app/images'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Paciente;
 
 class HomeController extends Controller
 {
@@ -22,9 +23,8 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(){
-        $titulo = 'Pacientes';
-        return view('home',array(
-            'titulo'=> $titulo
-        ));
+       
+        $pacientes = Paciente::all();
+        return view('home',['pacientes'=>$pacientes]);
     }
 }

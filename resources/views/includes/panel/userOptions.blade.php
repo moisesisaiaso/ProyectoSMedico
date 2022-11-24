@@ -10,9 +10,9 @@
         <i class="ni ni-settings-gear-65"></i>
         <span>Configuración</span>
     </a>
-    <a href="#" class="dropdown-item">
-        <i class="ni ni-calendar-grid-58"></i>
-        <span>Activity</span>
+    <a href="{{route('password.user')}}" class="dropdown-item">
+        <i class="ni ni-key-25"></i>
+        <span>Password</span>
     </a>
     <a href="#" class="dropdown-item">
         <i class="ni ni-support-16"></i>

@@ -1,0 +1,31 @@
+.image,
+.form-Avatar {
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+    display: flex;
+    align-items: center; /* vertical */
+    justify-content: center; /* horizontal */
+    margin: 0 auto;
+}
+
+.form-Avatar-i {
+    font-size: 120px;
+    text-align: center;
+    display: block;
+}
+
+.panel-avatar {
+    height: 36px;
+    width: 36px;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.panel-Avatar-i {
+    font-size: 36px;
+    display: block;
+    position: relative;
+    margin-top: -5px;
+}

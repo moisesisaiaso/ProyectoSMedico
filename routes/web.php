@@ -27,18 +27,38 @@ Route::get('/', function () {
 
 
     die(); */
-    return view('auth.login');
+   
+    if(auth()->user()){
+        return redirect()->route('home');
+    }else{
+        return view('auth.login');
+
+    }
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Ruta Paciente
-Route::get('/patient', [App\Http\Controllers\PatientController::class, 'index']);
 
+// RUTAS DE USUARIO
 
 //Ruta configuracion de cuenta
 Route::get('/configuracion',[App\Http\Controllers\UserController::class, 'config'])->name('config.user');
 
 Route::post('/user/update',[App\Http\Controllers\UserController::class, 'update'])->name('update.user');
+
+Route::get('/user/avatar/{filename}',[App\Http\Controllers\UserController::class, 'getImage'])->name('getImage.user');
+
+//Ruta configuración de password
+Route::get('/password',[App\Http\Controllers\UserController::class, 'password'])->name('password.user');
+
+Route::post('/password/update',[App\Http\Controllers\UserController::class, 'updatePassword'])->name('updatePassword.user');
+
+Route::get('/patient', [App\Http\Controllers\PatientController::class, 'index']); // ojo esta ruta hay que reemplazarla por una de las rutas de paciente en este controlador resource y va a ser la de ver paciente, para de esta forma ingresar a la vista del paciente
+
+//RUTA DE PACIENTE HOME
+//Ruta Paciente
+
+Route::resource('/paciente', App\Http\Controllers\PacienteController::class); // para ver mas detallado las rutas y name que tiene cada controlador con esta ruta resource, podemos listar en la consola con el comando://* php artisan route:list 
+//? esto podría servir para mostrar las rutas de mejor forma: https://javiergutierrez.trade/mostrar-una-lista-de-rutas-por-consola-en-laravel-de-forma-bonita/
