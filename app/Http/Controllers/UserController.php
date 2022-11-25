@@ -32,8 +32,9 @@ class UserController extends Controller
         
         //validación del formulario
         $validate = $this->validate($request, [  /* Me permite poner reglas de validación para los datos que se envien*/
-            'name' => ['required', 'string', 'max:255,','unique:users,name,'.$id], //unique:users,name,'.$id esto condiciona que los datos en el campo de name debe ser unico, es decir no debe repetirce con ningún otro registro
+            'name' => ['required', 'string', 'max:255,','unique:users,name,'.$id], //unique:users,name,'.$id esto condiciona que los datos en el campo de name debe ser unico a excepción de si coinciden con el mismo valor ya almacenado, es decir no debe repetirce con ningún otro registro mas que consigo mismo
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$id]
+            //para  crear nuevos datos de un usuario nuevo esto sería diferente solo se necesitaría de unique:users para hacer que los campos no permitan valore ya existentes o repetidos en otros registros
         ]);
 
 
@@ -110,5 +111,15 @@ class UserController extends Controller
                          ->with(['message'=>'Contraseña actualizada correctamente']);
     
 
+    }
+
+    //Perfil de usuario
+    public function perfil(){
+        $user = \Auth::user();
+        $titulo = "MI PERFIL";
+        return view('user.perfil',[
+            'user'=>$user,
+            'titulo'=>$titulo
+        ]);
     }
 }

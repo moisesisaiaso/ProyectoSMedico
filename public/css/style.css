@@ -1,8 +1,4 @@
-.image,
-.form-Avatar {
-    width: 130px;
-    height: 130px;
-    overflow: hidden;
+.image{
     display: flex;
     align-items: center; /* vertical */
     justify-content: center; /* horizontal */
@@ -15,17 +11,12 @@
     display: block;
 }
 
-.panel-avatar {
-    height: 36px;
-    width: 36px;
-    display: block;
-    margin: 0 auto;
-    overflow: hidden;
-}
 
 .panel-Avatar-i {
-    font-size: 36px;
+    font-size: 40px;
     display: block;
     position: relative;
     margin-top: -5px;
 }
+
+

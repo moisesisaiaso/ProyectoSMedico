@@ -50,14 +50,15 @@ Route::post('/user/update',[App\Http\Controllers\UserController::class, 'update'
 
 Route::get('/user/avatar/{filename}',[App\Http\Controllers\UserController::class, 'getImage'])->name('getImage.user');
 
-//Ruta configuración de password
+//Ruta  configuración de password
 Route::get('/password',[App\Http\Controllers\UserController::class, 'password'])->name('password.user');
 
 Route::post('/password/update',[App\Http\Controllers\UserController::class, 'updatePassword'])->name('updatePassword.user');
 
-Route::get('/patient', [App\Http\Controllers\PatientController::class, 'index']); // ojo esta ruta hay que reemplazarla por una de las rutas de paciente en este controlador resource y va a ser la de ver paciente, para de esta forma ingresar a la vista del paciente
+//Ruta de perfil de usuario
+Route::get('/perfil',[App\Http\Controllers\UserController::class, 'perfil'])->name('perfil.user');
 
-//RUTA DE PACIENTE HOME
+//RUTA RESOURCE DE PACIENTE HOME
 //Ruta Paciente
 
 Route::resource('/paciente', App\Http\Controllers\PacienteController::class); // para ver mas detallado las rutas y name que tiene cada controlador con esta ruta resource, podemos listar en la consola con el comando://* php artisan route:list 

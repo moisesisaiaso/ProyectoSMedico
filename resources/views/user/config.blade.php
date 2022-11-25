@@ -35,7 +35,7 @@
               <form role="form" method="POST" action="{{ route('update.user') }}" enctype="multipart/form-data"> <!-- enctype="multipart/form-data" esto me permite mandar archivos por el formulario -->
                 @csrf
 
-                <div class="form-group">
+                <div class="form-group image-user">
                  <!-- Avatar Form -->
                  @include('includes.panel.avatarForm')
                 </div>

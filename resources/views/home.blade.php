@@ -8,26 +8,22 @@
             <div class="card-header">{{ __('Bienvenido !') }}</div>
 
             <div class="card-body">
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
-                @if((session('status')))
-                  <div class="alert alert-success alert-dismissible fade show" role="alert">
-                      <span class="alert-icon">
-                        <i class="ni ni-like-2"></i>
-                      </span>
-                      <span class="alert-text"><strong>Success!</strong>{{ session('status') }}
-                      </span>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
-                </div>
-               @else
+               
+              @if((session('status')))
+                  <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+                        <span class="alert-icon">
+                          <i class="ni ni-like-2"></i>
+                        </span>
+                        <span class="alert-text"><strong>Éxito! </strong>{{ session('status') }}
+                        </span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                  </div>
+            
+              @else
                 {{ __('Esta es la lista de pacientes existentes!') }}
-               @endif
+              @endif
             </div>
         </div>
     </div>
@@ -81,10 +77,10 @@
                 {{$paciente->edad}}
               </td>
               <td>
-                {{$paciente->peso}}
+                {{$paciente->peso}} kg
               </td>
               <td>
-                {{$paciente->talla}}
+                {{$paciente->talla}} m
               </td>
             </tr>
           @endforeach
@@ -120,14 +116,19 @@
              </tr>
              <tr> 
                <td style="padding: 16px 15px">
-                   <a href="#!" class="btn btn-sm btn-info" style="display: block">Entrar</a>
+                   <a href="{{route('paciente.show',['paciente'=>$paciente->id])}}" class="btn btn-sm btn-info" style="display: block">Entrar</a>
                </td>
                <td style="padding-left:0px; padding-right:0px">
-                   <a href="#!" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
+                   <a href="{{route('paciente.edit',['paciente'=>$paciente->id])}}" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
                </td>
-               <td style="padding: 16px 15px">
-                   <a href="#!" class="btn btn-sm btn-default" style="display: block">Eliminar</a>
-               </td>
+
+               <form action="{{route('paciente.destroy',['paciente'=>$paciente->id])}}" method="POST">
+                @csrf
+                @method('DELETE')
+                 <td style="padding: 16px 15px">
+                     <button type="submit" class="btn btn-sm btn-default" style="display: block">Eliminar</button>
+                 </td>
+               </form>
              </tr>
           @endforeach
 

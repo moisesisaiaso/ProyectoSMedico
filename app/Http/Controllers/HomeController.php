@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index(){
        
-        $pacientes = Paciente::all();
+        $pacientes = Paciente::orderBy('id','desc')->get(); //permite obtener todos los pacientes ordenados de manera descendentes es decir del mas actual al antiguo
         return view('home',['pacientes'=>$pacientes]);
     }
 }

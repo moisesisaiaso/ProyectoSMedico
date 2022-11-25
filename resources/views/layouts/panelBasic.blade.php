@@ -29,7 +29,7 @@
         <div>
           <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{route('config.user')}}">@yield('title')</a>
           
-          <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" style="margin-left: 40px" href="{{route('home')}}"><img  src= "{{asset('img/brand/pacientes.svg')}}"></img></a>
+          <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" style="margin-left: 40px" href="{{route('home')}}"><i class="fas fa-notes-medical" style="font-size: 24px"></i></a>
         </div>
         
         @else
