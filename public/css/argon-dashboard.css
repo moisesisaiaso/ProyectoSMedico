@@ -5330,8 +5330,8 @@ input[type="button"].btn-block {
 .page-item.active .page-link {
     z-index: 1;
     color: #fff;
-    background-color: #5e72e4;
-    border-color: #5e72e4;
+    background: rgb(24 198 216) !important;
+    border-color: rgb(24 198 216)
 }
 
 .page-item.disabled .page-link {
@@ -20792,8 +20792,5 @@ pre > code.highlight {
     ) !important;
     border-radius: 50px !important;
 }
-
-
-
 
 /* IMAGE AVATAR */

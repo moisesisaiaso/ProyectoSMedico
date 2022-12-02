@@ -63,3 +63,7 @@ Route::get('/perfil',[App\Http\Controllers\UserController::class, 'perfil'])->na
 
 Route::resource('/paciente', App\Http\Controllers\PacienteController::class); // para ver mas detallado las rutas y name que tiene cada controlador con esta ruta resource, podemos listar en la consola con el comando://* php artisan route:list 
 //? esto podría servir para mostrar las rutas de mejor forma: https://javiergutierrez.trade/mostrar-una-lista-de-rutas-por-consola-en-laravel-de-forma-bonita/
+
+
+//Ruta paciente-LugarAtecion
+Route::resource('/lugarAtencion',App\Http\Controllers\lugarAController::class);

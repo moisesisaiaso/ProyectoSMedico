@@ -27,7 +27,7 @@
         @if(isset($titulo))
         <!-- Brand -->
         <div>
-          <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{route('config.user')}}">@yield('title')</a>
+          <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">@yield('title')</a>
           
           <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" style="margin-left: 40px" href="{{route('home')}}"><i class="fas fa-notes-medical" style="font-size: 24px"></i></a>
         </div>
@@ -83,9 +83,11 @@
   <!--   Optional JS   -->
   <script src="{{asset('js/plugins/chart.js/dist/Chart.min.js')}}"></script>
   <script src="{{asset('js/plugins/chart.js/dist/Chart.extension.js')}}"></script>
+ 
   <!--   Argon JS   -->
   <script src="{{asset('js/argon-dashboard.min.js?v=1.1.2')}}"></script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  </script> <!-- lisnk para campo de fecha en create paciente -->
   <script>
     window.TrackJS &&
       TrackJS.install({
@@ -93,6 +95,7 @@
         application: "argon-dashboard-free"
       });
   </script>
+
 </body>
 
 </html>

@@ -34,7 +34,10 @@ class PacienteController extends Controller
     //? CREATE ----- C
     public function create()
     {
-        return view('paciente.create');
+        $titulo = "estado panelBasico";
+        return view('paciente.create',[
+            'titulo'=> $titulo,
+        ]);
     }
 
     /**
@@ -63,6 +66,9 @@ class PacienteController extends Controller
         //*instanciamos el objeto para crear un nuevo paciente
         $paciente = new Paciente;
         
+        $user = \Auth::user();
+        $paciente->user_id = $user->id; // llenando el campo de la clave foranea user_id
+
         //*Asignamos los valores que nos llegan de los input a las propiedades del objeto
         $paciente->name = $request->name; //podemos hacer referencia directamente al valor del atributo name de los imput, en casos anteriores utilizabamos el metodo input('') ejemplo:
         $paciente->historiaClinica = $request->input('historiaClinica')	;
@@ -115,8 +121,10 @@ class PacienteController extends Controller
         //Cargar datos en el los input del formulario
         $paciente = Paciente::find($id);
 
+        $titulo = "stado panelBasico";
         return view('paciente.create',[
-            'paciente'=>$paciente
+            'paciente'=>$paciente,
+            'titulo'=> $titulo,
         ]);
     }
 

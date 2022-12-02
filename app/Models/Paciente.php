@@ -12,8 +12,8 @@ class Paciente extends Model
     protected $table = 'pacientes';
     //Esta relación me va a permitir sacar todos los lugaresA cuyo paciente_id es igual a un numero, se sacan estos datos llamando al metodo una ves creado el objeto pacientes en este caso
     //Relacion One to Many / de uno a muchos
-    public function lugaresA(){  // para sacar todos los usuarios asignados a un paciente
-        return $this->hasMany('App\Models\LugarA');// como parametro indico con que objeto quiero que se relacione o trabaje
+    public function lugaresA(){  // para sacar todos los lugaresA asignados a un paciente
+        return $this->hasMany('App\Models\LugarA');// como parametro indico con que objeto(modelo) quiero que se relacione o trabaje
 
     }
 
@@ -43,7 +43,7 @@ class Paciente extends Model
 
 
     //Relación One to Many / de uno a muchos.
-    public function antecendentes(){
+    public function antecedentes(){
         return $this->hasMany('App\Models\Antecedente'); //en otras palabras el metodo hasMany se va a encargar de buscar todos los antecedentes cuyo Paciente sea el que estamos sacando
     }
 

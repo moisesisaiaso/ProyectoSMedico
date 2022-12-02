@@ -49,9 +49,9 @@ return [
             'visibility' => 'public',
         ],
 
-        'images' => [ // con esto genero discos virtuales que me permiten almacenar archivos de imagenes en este caso y de manera protegida
+        'examenesF' => [ // con esto genero discos virtuales que me permiten almacenar archivos de imagenes en este caso y de manera protegida
             'driver' => 'local',
-            'root' => storage_path('app/images'),
+            'root' => storage_path('app/examenesF'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],

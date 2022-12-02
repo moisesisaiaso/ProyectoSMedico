@@ -14,7 +14,7 @@
         <i class="ni ni-key-25"></i>
         <span>Password</span>
     </a>
-    <a href="#" class="dropdown-item">
+    <a href="#" class="dropdown-item" data-container="body" data-toggle="popover" data-placement="left" data-content="Por favor diríjase con el administrador.">
         <i class="ni ni-support-16"></i>
         <span>Ayuda</span>
     </a>

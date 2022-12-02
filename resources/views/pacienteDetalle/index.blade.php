@@ -3,19 +3,75 @@
 
 @section('content')
 
-<div class="row">
-    <div class="col-md-12 mb-4">
-        <div class="card">
-            <div class="card-header">{{ __('Bienvenido !') }}</div>
+<!-- Array de objetos de compatibilidad del tipo de sangre -->
+<?php
 
-            <div class="card-body">
+class TiposSangre{
+  public $tipoSangre;
+  public $da;
+  public $recibe;
+}
+
+$compatibilidad1 = new TiposSangre();
+$compatibilidad1->tipoSangre = "A+";
+$compatibilidad1->da = "A+, AB+";
+$compatibilidad1->recibe = "A+, A-, O+, O-";
+
+$compatibilidad2 = new TiposSangre();
+$compatibilidad2->tipoSangre = "O+";
+$compatibilidad2->da = "O+, A+, B+, AB+";
+$compatibilidad2->recibe = "O+, O-";
+
+$compatibilidad3 = new TiposSangre();
+$compatibilidad3->tipoSangre = "B+";
+$compatibilidad3->da = "B+, AB+";
+$compatibilidad3->recibe = "B+, B-, O+, O-";
+
+$compatibilidad4 = new TiposSangre();
+$compatibilidad4->tipoSangre = "AB+";
+$compatibilidad4->da = "AB+";
+$compatibilidad4->recibe = "Todos";
+
+$compatibilidad5 = new TiposSangre();
+$compatibilidad5->tipoSangre = "A-";
+$compatibilidad5->da = "A+, A-, AB+, AB-";
+$compatibilidad5->recibe = "A-, O-";
+
+$compatibilidad6 = new TiposSangre();
+$compatibilidad6->tipoSangre = "O-";
+$compatibilidad6->da = "Todos";
+$compatibilidad6->recibe = "O-";
+
+$compatibilidad7 = new TiposSangre();
+$compatibilidad7->tipoSangre = "B-";
+$compatibilidad7->da = "B+, B-, AB+, AB-";
+$compatibilidad7->recibe = "B-, O-";
+
+$compatibilidad8 = new TiposSangre();
+$compatibilidad8->tipoSangre = "AB-";
+$compatibilidad8->da = "AB+, AB-";
+$compatibilidad8->recibe = "AB-, A-, B-, O-";
+
+$compatibilidades = [$compatibilidad1,$compatibilidad2,$compatibilidad3,$compatibilidad4,$compatibilidad5,$compatibilidad6,$compatibilidad7,$compatibilidad8]
+
+?>
+
+<div class="row">
+    <div class="col-md-12 mb-5">
+        <div class="card">
+            
+
+            <div class="card-body" style="display: flex; justify-content: space-between">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
                 @endif
 
-                {{ __('You are logged in!') }}
+                <div> Dashboard</div>
+                <a class="h4 mb-0 text-default text-uppercase d-none d-lg-inline-block" style="margin-left: 40px justify-content: end" href="{{route('home')}}">
+                  <i class="fas fa-notes-medical" style="font-size: 24px"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -27,11 +83,9 @@
       <div class="card-header border-0">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="mb-0">Paciente</h3>
+            <h3 class="mb-0">Compatibilidad del tipo de sangre</h3>
           </div>
-          <div class="col text-right">
-            <a href="#!" class="btn btn-sm btn-outline-success">Crear</a>  
-          </div>
+          
         </div>
       </div>
       <div class="table-responsive">
@@ -39,48 +93,40 @@
         <table class="table align-items-center table-flush">
           <thead class="thead-light">
             <tr>
-              <th scope="col">Nombre</th>
-              <th scope="col">N°Cédula</th>
-              <th scope="col">Genero</th>
-              <th scope="col">Grupo Sanguineo</th>
-              <th scope="col">Edad</th>
+              <th scope="col">Tipo de sangre</th>
+              <th scope="col">Da</th>
+              <th scope="col">Recibe</th>
             </tr>
           </thead>
           <tbody>
-            <tr height="61px">
-              <th scope="row">
-                /argon/
-              </th>
-              <td>
-                4,569
-              </td>
-              <td>
-                340
-              </td>
-              <td>
-                <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-              </td>
-              <td>
-                23
-              </td>
-            </tr>
-            <tr height="61px">
-              <th scope="row">
-                /argon/index.html
-              </th>
-              <td>
-                3,985
-              </td>
-              <td>
-                319
-              </td>
-              <td>
-                <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-              </td>
-              <td>
-                29
-              </td>
-            </tr>
+            @foreach($compatibilidades as $compatibilidad)
+              @if($compatibilidad->tipoSangre != $paciente->grupoSanguineo )
+                <tr height="50px">
+                  <th scope="row">
+                    {{$compatibilidad->tipoSangre}}
+                  </th>
+                  <td>
+                  {{ $compatibilidad->da}}
+                  </td>
+                  <td>
+                    {{$compatibilidad->recibe}}
+                  </td>
+                </tr>
+              @else
+                <tr height="50px" style="color: white; font-weight: bold" class="bg-success">
+                  <th scope="row" style="font-size: 15px">
+                    {{$compatibilidad->tipoSangre}}
+                  </th>
+                  <td style="font-size: 15px">
+                  {{ $compatibilidad->da}}
+                  </td>
+                  <td style="font-size: 15px">
+                    {{$compatibilidad->recibe}}
+                  </td>
+                </tr>
+              @endif
+              
+            @endforeach
           </tbody>
         </table>
       </div>
@@ -93,43 +139,32 @@
        <div class="card-header border-0">
          <div class="row align-items-center">
            <div class="col">
-             <h3 class="mb-0">Acciones</h3>
+             <h3 class="mb-0">Estado</h3>
            </div>
          </div>
        </div>
        <div class="table-responsive">
          <!-- Projects table -->
          <table class="table align-items-center table-flush">
-           <thead class="thead-light" height="43px">
+           <thead class="thead-light" height="40px">
              <tr>
                <th scope="col" colspan="3"></th>
              </tr>
            </thead>
            <tbody>
+             @foreach($compatibilidades as $compatibilidad)
              <tr> 
-               <td style="padding: 16px 15px">
-                   <a href="#!" class="btn btn-sm btn-info" style="display: block">Ver</a>
+               @if($compatibilidad->tipoSangre != $paciente->grupoSanguineo )
+               <td style="padding: 16px 15px; text-align: center">
+                 INCOMPATIBLE
                </td>
-               <td style="padding-left:0px; padding-right:0px">
-                   <a href="#!" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
+                @else
+               <td style="padding: 16px 15px; text-align: center; color: white; font-weight: bold; font-size: 15px" class="bg-success">
+                 COMPATIBLE
                </td>
-               <td style="padding: 16px 15px">
-                   <a href="#!" class="btn btn-sm btn-default" style="display: block">Eliminar</a>
-               </td>
-       
+                @endif
              </tr>
-             <tr> 
-               <td style="padding: 16px 15px">
-                   <a href="#!" class="btn btn-sm btn-info" style="display: block">Ver</a>
-               </td>
-               <td style="padding-left:0px; padding-right:0px">
-                   <a href="#!" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
-               </td>
-               <td style="padding: 16px 15px">
-                   <a href="#!" class="btn btn-sm btn-default" style="display: block">Eliminar</a>
-               </td>
-              
-             </tr>
+          @endforeach
            </tbody>
          </table>
        </div>

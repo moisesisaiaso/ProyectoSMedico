@@ -71,7 +71,7 @@
                 {{$paciente->sexo}}
               </td>
               <td>
-                <i class="fas fa-arrow-up text-success mr-3"></i>{{$paciente->grupoSanguineo}}
+                <i class="fas fa-burn text-danger mr-3"></i>{{$paciente->grupoSanguineo}}
               </td>
               <td>
                 {{$paciente->edad}}
@@ -113,8 +113,24 @@
 
            <!-- Itera -->
            @foreach($pacientes as $paciente)
-             </tr>
-             <tr> 
+
+            <!-- //^ Logica para saber si un paciente se puede borrar o no por dependencia de datos y de esta forma permitir o no crear el boton "eliminar"
+            // ? aquí en PHP los nombres de propiedades están en "" como un objeto json, por este motivo no causará problemas acceder a sus propiedades con string -->
+                <?php
+                    $dependendientes = ['antecedentes','diagnosticos','examenesf','lugaresa','motivosc','signosv','tratamientos'];
+
+                    $dependenciaConPacientes = false;
+                    foreach($dependendientes as $dependiente){
+
+                      if(count($paciente->$dependiente) != 0){
+                          $dependenciaConPacientes = true;
+                      }
+                    }
+          
+                ?>
+                
+            @if($dependenciaConPacientes == false)
+            <tr> 
                <td style="padding: 16px 15px">
                    <a href="{{route('paciente.show',['paciente'=>$paciente->id])}}" class="btn btn-sm btn-info" style="display: block">Entrar</a>
                </td>
@@ -122,21 +138,40 @@
                    <a href="{{route('paciente.edit',['paciente'=>$paciente->id])}}" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
                </td>
 
-               <form action="{{route('paciente.destroy',['paciente'=>$paciente->id])}}" method="POST">
-                @csrf
-                @method('DELETE')
-                 <td style="padding: 16px 15px">
-                     <button type="submit" class="btn btn-sm btn-default" style="display: block">Eliminar</button>
-                 </td>
-               </form>
-             </tr>
+               <td style="padding: 16px 15px; width: 20px">
+                  <form action="{{route('paciente.destroy',['paciente'=>$paciente->id])}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                      
+                      <button type="submit" class="btn btn-sm btn-default" style="display: block; width: 85px">Eliminar</button>
+                  </form>
+                </td>
+            </tr>
+            @else
+          
+            <tr> 
+               <td style="padding: 16px 15px">
+                   <a href="{{route('paciente.show',['paciente'=>$paciente->id])}}" class="btn btn-sm btn-info" style="display: block">Entrar</a>
+               </td>
+               <td style="padding-left:0px; padding-right:15px" colspan="2">
+                   <a href="{{route('paciente.edit',['paciente'=>$paciente->id])}}" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
+               </td>
+            </tr>
+
+               
+            @endif
           @endforeach
 
 
            </tbody>
          </table>
        </div>
-     </div> 
-   </div> 
+       
+      </div> 
+    </div> 
+    <!-- Enlace vista de paginación personalizada:  https://laravel.com/docs/9.x/pagination#customizing-the-pagination-view-->
+    <div class="card-body"> 
+        {{$pacientes->links()}}
+    </div>
 </div>
 @endsection

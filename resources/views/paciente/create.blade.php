@@ -1,5 +1,5 @@
 @extends('layouts.panelBasic')
-@section('title', 'home')
+@section('title', '')
 
 @section('content')
 <div class="row">
@@ -132,6 +132,9 @@
                     <input type="text" name="talla" class="form-control" value="{{$paciente->talla ?? old('talla')}}">
                 </div>
                 
+
+                
+
                 <div class="form-group flex-grow-1 ml-2 mr-2 w-25">
                     <label for="fechaNacimiento" class="form-control-label">Fecha de Nacimiento
                     </label>
@@ -148,7 +151,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn  btn-lg btn-block" style="background-color: #2dcebd; color: white">Crear paciente</button>
+            <button type="submit" class="btn  btn-lg btn-block" style="background-color: #2dcebd; color: white"><i class="ni ni-send"></i>{{isset($paciente) && is_object($paciente)? ' Editar paciente':' Crear paciente'}}</button>
         </form>
       </div>
     </div>
