@@ -48,7 +48,7 @@ Route::get('/configuracion',[App\Http\Controllers\UserController::class, 'config
 
 Route::post('/user/update',[App\Http\Controllers\UserController::class, 'update'])->name('update.user');
 
-Route::get('/user/avatar/{filename}',[App\Http\Controllers\UserController::class, 'getImage'])->name('getImage.user');
+Route::get('/user/avatar/{filename}',[App\Http\Controllers\UserController::class, 'getImage'])->name('getImage.user'); 
 
 //Ruta  configuración de password
 Route::get('/password',[App\Http\Controllers\UserController::class, 'password'])->name('password.user');
@@ -62,8 +62,13 @@ Route::get('/perfil',[App\Http\Controllers\UserController::class, 'perfil'])->na
 //Ruta Paciente
 
 Route::resource('/paciente', App\Http\Controllers\PacienteController::class); // para ver mas detallado las rutas y name que tiene cada controlador con esta ruta resource, podemos listar en la consola con el comando://* php artisan route:list 
-//? esto podría servir para mostrar las rutas de mejor forma: https://javiergutierrez.trade/mostrar-una-lista-de-rutas-por-consola-en-laravel-de-forma-bonita/
+
+// !  Ojo al enviar un dato del parametro de la ruta desde un enlace(a) ejemplo: <a href="{{route('paciente.show',['paciente'=>$paciente->id])}}" en el array asociativo su nombre debe ser igual al nombre del parametro que se establece en la ruta, sino ocurre un error*/
 
 
 //Ruta paciente-LugarAtecion
-Route::resource('/lugarAtencion',App\Http\Controllers\lugarAController::class);
+Route::get('/lugarAtencion/{lugarAtencion}/crear',[App\Http\Controllers\lugarAController::class, 'create'])->name('lugarAtencion.create'); // esta es una ruta adicional al controlador resource(lugarAController) //? las nuevas rutas se ponen antes para evitar problemas con las rutas por defecto
+
+Route::get('/lugarAtencion/{lugarAtencion}/listar',[App\Http\Controllers\lugarAController::class, 'index'])->name('lugarAtencion.index');
+
+Route::resource('/lugarAtencion',App\Http\Controllers\lugarAController::class)->except(['create','index']); // except es un metodo que se le aplicac a la ruta resource para omitir metodos del controlador, //^ en este caso yo utilizo este metodo para poder crear un metodo adaptado a lo que requiero, que es permitir que el metodo create del controlador reciba un parametro para poder enviar el id del paciente

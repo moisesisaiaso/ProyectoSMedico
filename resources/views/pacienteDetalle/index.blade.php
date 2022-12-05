@@ -60,7 +60,6 @@ $compatibilidades = [$compatibilidad1,$compatibilidad2,$compatibilidad3,$compati
     <div class="col-md-12 mb-5">
         <div class="card">
             
-
             <div class="card-body" style="display: flex; justify-content: space-between">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">

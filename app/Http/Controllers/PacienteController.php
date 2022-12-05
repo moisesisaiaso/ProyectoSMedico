@@ -57,7 +57,7 @@ class PacienteController extends Controller
         $messages = [
             'historiaClinica.unique'=>'El número de historia clínica ya existe.',
             'historiaClinica.max'=>'El número de historia clínica debe tener 10 digitos.',
-            'historiaClinica.min'=> 'El número de historia clínica debe tener 10 digitos.'
+            'historiaClinica.min'=>'El número de historia clínica debe tener 10 digitos.'
         ];
 
         $this->validate($request, $rules,$messages );
@@ -96,14 +96,13 @@ class PacienteController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //? MOSTRAR DETALLE PACIENTE
+     //? MOSTRAR DETALLE PACIENTE (Dasboard)
     public function show($id)
     {
        $paciente = Paciente::find($id);
        
-        $titulo = 'Paciente';
+        
         return view('pacienteDetalle.index', array(
-            'titulo'=> $titulo,
             'paciente'=> $paciente
         ));
     }

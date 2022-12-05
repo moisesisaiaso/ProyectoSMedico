@@ -57,15 +57,16 @@
                     <input class="form-control bg-secondary" placeholder="Email" type="email" name="email" value="{{Auth::user()->email}}" required autocomplete="email">  <!-- {{Auth::user()->email}} esto me permite aaceder al objeto del usuario autenticado y atraves de este puedo obtener los valores de sus propiedades -->
                   </div>
                 </div>
+                
                 <div class="form-group">
-
                   <div class="input-group input-group-alternative mb-3">
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="image_path" lang="en" name="image_path">
-                      <label class="custom-file-label" for="customFileLang">Selecciona una image de Perfil</label>
+                      <input type="file" class="custom-file-input" id="image_path" lang="en" name="image_path" style="cursor:pointer">
+                      <label class="custom-file-label" for="customFileLang" style="cursor:pointer">Selecciona una image de Perfil</label>
                     </div>
                   </div>
                 </div>
+
                 <div class="text-center">
                   <button type="submit" class="btn btn-outline-success mt-4">Guardar cambios</button>
                 </div>
