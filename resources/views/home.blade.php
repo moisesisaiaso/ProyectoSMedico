@@ -62,7 +62,7 @@
           @foreach($pacientes as $paciente)
             <tr height="61px">
               <th scope="row">
-                {{$paciente->name}}
+              <i class="ni ni-single-02 text-warning mr-3"></i> {{$paciente->name}}
               </th>
               <td>
                 {{$paciente->historiaClinica}}
@@ -117,7 +117,7 @@
             <!-- //^ Logica para saber si un paciente se puede borrar o no por dependencia de datos y de esta forma permitir o no crear el boton "eliminar"
             // ? aquí en PHP los nombres de propiedades están en "" como un objeto json, por este motivo no causará problemas acceder a sus propiedades con string -->
                 <?php
-                    $dependendientes = ['antecedentes','diagnosticos','examenesf','lugaresa','motivosc','signosv','tratamientos'];
+                    $dependendientes = ['antecedentes','diagnosticos','examenesF','lugaresA','motivosC','signosV','tratamientos'];
 
                     $dependenciaConPacientes = false;
                     foreach($dependendientes as $dependiente){

@@ -12,13 +12,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="./examples/maps.html">
+            <a class="nav-link " href="{{route('motivoConsulta.create',['motivoConsulta'=>$paciente->id])}}">
               <i class="fas fa-bed text-warning"></i> Motivo de consulta
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="./examples/profile.html">
-              <i class="ni ni-badge text-yellow"></i> Paciente
+            <a class="nav-link " href="{{route('paciente.perfil',['paciente'=>$paciente->id])}}">
+              <i class="ni ni-badge text-yellow"></i> Perfil del Paciente
             </a>
           </li>
           <li class="nav-item">

@@ -74,18 +74,41 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white d-none d-lg-inline-block" href="./index.html"><span class="">Paciente : </span> <span class="text-uppercase">{{$paciente->name}}</span></a>
+        <a class="h4 mb-0 text-white d-none d-lg-inline-block" href="{{route('paciente.perfil',['paciente'=>$paciente->id])}}"><span class="">Paciente : </span> <span class="">{{$paciente->name}}</span></a>
+
+        <!-- alert error formulario buscar-->
+        @if($errors->any())
+              @foreach($errors->all() as $error)
+                
+                    <!-- Form -->
+                    <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto" action="{{route('paciente.buscar')}}" method="POST">
+                    @csrf
+                      <div class="form-group mb-0">
+                        <div class="input-group input-group-alternative">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                          </div>
+                          <input class="form-control" placeholder="Error! {{$error}}" type="text" name="buscar">
+                        </div>  
+                      </div>
+                    </form>
+                  
+              @endforeach
+        @else
+        
         <!-- Form -->
-        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto" action="{{route('paciente.buscar')}}" method="POST">
+        @csrf
           <div class="form-group mb-0">
             <div class="input-group input-group-alternative">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-search"></i></span>
               </div>
-              <input class="form-control" placeholder="Search" type="text">
-            </div>
+              <input class="form-control" placeholder="Buscar por Cédula" type="text" name="buscar">
+            </div>  
           </div>
         </form>
+        @endif
         <!-- User  para escritorio-->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
           <li class="nav-item dropdown">

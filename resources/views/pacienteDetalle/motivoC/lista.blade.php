@@ -23,7 +23,7 @@
                 </div>
               @else
             <div class= "card-body" style="display: flex; justify-content: space-between">
-                <div>Lugar de Atención</div>
+                <div>Moitivo de Consulta</div>
                 <a class="h4 mb-0 text-default text-uppercase d-none d-lg-inline-block" style="margin-left: 40px justify-content: end" href="{{route('home')}}">
                     <i class="fas fa-notes-medical" style="font-size: 24px"></i>
                 </a>
@@ -41,10 +41,10 @@
       <div class="card-header border-0">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="mb-0">Lugares A</h3>
+            <h3 class="mb-0">Motivos de Consulta</h3>
           </div>
           <div class="col text-right">
-            <a href="{{route('lugarAtencion.create',['lugarAtencion'=>$paciente->id])}}" class="btn btn-sm btn-outline-success">Crear Registro</a>  
+            <a href="{{route('motivoConsulta.create',['motivoConsulta'=>$paciente->id])}}" class="btn btn-sm btn-outline-success">Crear Registro</a>  
           </div>
         </div>
       </div>
@@ -53,24 +53,24 @@
         <table class="table align-items-center table-flush">
           <thead class="thead-light">
             <tr>
-              <th scope="col">Tipo de atención</th>
-              <th scope="col">Lugar de atención</th>
-              <th scope="col">Grupos prioritarios</th>
+              <th scope="col">Planificacion Familiar</th>
+              <th scope="col">Descripcion del Motivo</th>
+              <th scope="col">Descripcion de Enfermedad</th>
             </tr>
           </thead>
           <tbody>
 
             <!-- itera -->
-          @foreach($lugaresA as $lugarA)
+          @foreach($motivosC as $motivoC)
             <tr height="61px">
               <th scope="row">
-                {{$lugarA->tipo_atencion}}
+                {{$motivoC->planificacion_familiar}}
               </th>
               <td>
-                {{$lugarA->lugar_atencion}}
+                {{$motivoC->descripcion_motivo}}
               </td>
               <td>
-                <i class="ni ni-ungroup text-primary mr-3"></i>{{$lugarA->grupo_prioritario}}
+                <i class="ni ni-ungroup text-primary mr-3"></i>{{$motivoC->descripcion_enfermedad}}
               </td>
             </tr>
           @endforeach
@@ -102,7 +102,7 @@
            <tbody>
 
            <!-- Itera -->
-           @foreach($lugaresA as $i => $lugarA)
+           @foreach($motivosC as $i => $motivoC)
              
             @if($i < 4)<!-- esta condición me permite agrandar el ultimo tr de las acciones cuando hay 5 registros, esto por que al haber mas la tabla de "lugares" se alarga mientras que en "acciones" un un descompenso, de esta forma igualamos la altura con la tabla de acciones -->
             
@@ -111,11 +111,11 @@
                    <a href="" class="btn btn-sm btn-info" style="display: block">Entrar</a>
                </td>
                <td style="padding-left:0px; padding-right:0px">
-                   <a href="{{route('lugarAtencion.edit',['lugarAtencion'=>$lugarA->id])}}" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
+                   <a href="{{route('motivoConsulta.edit',['motivoConsulta'=>$motivoC->id])}}" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
                </td>
 
                <td style="padding: 16px 10px; width: 20px">
-                  <form action="{{route('lugarAtencion.destroy',['lugarAtencion'=>$lugarA->id])}}" method="POST">
+                  <form action="{{route('motivoConsulta.destroy',['motivoConsulta'=>$motivoC->id])}}" method="POST">
                     @csrf
                     @method('DELETE')
                       
@@ -129,11 +129,11 @@
                    <a href="" class="btn btn-sm btn-info" style="display: block">Entrar</a>
                </td>
                <td style="padding-left:0px; padding-right:0px">
-                   <a href="{{route('lugarAtencion.edit',['lugarAtencion'=>$lugarA->id])}}" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
+                   <a href="{{route('motivoConsulta.edit',['motivoConsulta'=>$motivoC->id])}}" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
                </td>
 
                <td style="padding: 16px 10px; width: 20px">
-                  <form action="{{route('lugarAtencion.destroy',['lugarAtencion'=>$lugarA->id])}}" method="POST">
+                  <form action="{{route('motivoConsulta.destroy',['motivoConsulta'=>$motivoC->id])}}" method="POST">
                     @csrf
                     @method('DELETE')
                       
@@ -154,7 +154,7 @@
     </div> 
     <!-- Enlace vista de paginación personalizada:  https://laravel.com/docs/9.x/pagination#customizing-the-pagination-view-->
     <div class="card-body"> 
-        {{$lugaresA->links()}}
+        {{$motivosC->links()}}
     </div>
 </div>
 @endsection

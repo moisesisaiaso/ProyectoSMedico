@@ -187,4 +187,40 @@ class PacienteController extends Controller
         return redirect()->route('home')->with('status','Paciente borrado correctamente');
 
     }
+
+
+    //^ Buscador de paciente
+    public function buscar(Request $request){
+        //? validando el formulario 
+
+        $rules = [
+            'buscar'=>['max:10,','min:10,']
+        ];
+
+        $messages = [
+            'buscar' =>[
+                'buscar.max'=>'Debe tener 10 digitos.',
+                'buscar.min'=> 'Debe tener 10 digitos.'
+            ]
+        ];
+
+        $this->validate($request, $rules, $messages);
+        
+        $historiaClinica = $request->buscar;
+        
+        $paciente = Paciente::where('historiaClinica', $historiaClinica)->first(); // con esta instrucción me devuelve un registro de la tabla paciente haciendo referencia a un campo de su entidad y el valor del campo con el que se hará la busqueda
+
+        return redirect()->route('paciente.show',['paciente'=>$paciente->id]);
+    }
+    
+
+    //^ perfil del paciente (detalle - perfil)
+    public function perfil($id){
+        
+        $paciente = Paciente::find($id);
+
+        return view('pacienteDetalle.perfil',[
+            'paciente'=> $paciente
+        ]);
+    }
 }

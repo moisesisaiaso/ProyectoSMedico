@@ -37,13 +37,14 @@
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{route('home')}}">@yield('title')</a>
         <!-- Form -->
          
-          <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+          <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto" action="{{route('home.buscar')}}" method="POST">
+            @csrf
             <div class="form-group mb-0">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-search"></i></span>
                 </div>
-                <input class="form-control" placeholder="Search" type="text">
+                <input class="form-control" placeholder="Buscar por Nombre o Cédula" type="text" name="buscar">
               </div>
             </div>
           </form>
@@ -83,12 +84,16 @@
   <!--   Optional JS   -->
   <script src="{{asset('js/plugins/chart.js/dist/Chart.min.js')}}"></script>
   <script src="{{asset('js/plugins/chart.js/dist/Chart.extension.js')}}"></script>
- 
+
+  <!-- Scripts -->
+  @yield('scripts')
+  
   <!--   Argon JS   -->
   <script src="{{asset('js/argon-dashboard.min.js?v=1.1.2')}}"></script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
-  </script> <!-- lisnk para campo de fecha en create paciente -->
+  </script> 
   <script>
+
     window.TrackJS &&
       TrackJS.install({
         token: "ee6fab19c5a04ac1a32a645abde4613a",

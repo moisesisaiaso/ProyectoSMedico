@@ -138,7 +138,13 @@
                 <div class="form-group flex-grow-1 ml-2 mr-2 w-25">
                     <label for="fechaNacimiento" class="form-control-label">Fecha de Nacimiento
                     </label>
-                    <input  type="date" name="fechaNacimiento" class="form-control" value="{{$paciente->fechaNacimiento ?? old('fechaNacimiento')}}">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                        </div>
+                        <input class="form-control datepicker" placeholder="Seleccionar fecha" type="text" value="{{$paciente->fechaNacimiento ?? old('fechaNacimiento')}}" name="fechaNacimiento">
+                    </div>
+                    
                 </div>
 
                 <div class="form-group flex-grow-1 ml-2 mr-2">
@@ -157,4 +163,10 @@
     </div>
   </div>
 </div>
+@endsection
+
+@section('scripts')
+
+<script src="{{asset('js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+
 @endsection

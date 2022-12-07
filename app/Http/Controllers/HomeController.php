@@ -22,13 +22,32 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(){
+    public function index($buscar = null){
+
+        if(!empty($buscar)){ //Buscador
+            $pacientes = Paciente::where('name','LIKE','%'.$buscar.'%')
+                                   ->orwhere('historiaClinica','LIKE','%'.$buscar.'%')
+                                   ->orderBy('id','desc')->paginate(5);
+        }else{
+
+            $pacientes = Paciente::orderBy('id','desc')->paginate(5); //permite obtener todos los pacientes ordenados de manera descendentes es decir del mas actual al antiguo
+            // con el paginate secciono esa petición por paginas distintas
+        }
        
-        $pacientes = Paciente::orderBy('id','desc')->paginate(5); //permite obtener todos los pacientes ordenados de manera descendentes es decir del mas actual al antiguo
-        // con el paginate secciono esa petición por paginas distintas
 
         return view('home',[
             'pacientes'=>$pacientes,  
+        ]);
+    }
+
+    //? obteniendo los datos de la busqueda
+    public function buscar(Request $request){
+
+        $busqueda = $request->buscar;
+
+        
+        return redirect()->route('home',[
+            'buscar'=> $busqueda
         ]);
     }
 }
