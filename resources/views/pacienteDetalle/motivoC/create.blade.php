@@ -73,8 +73,7 @@
                 <div class="form-group ml-2 mr-2">
                     
                     <div class="input-group">
-                        <textarea class="form-control" aria-label="With textarea" name="planificacion_familiar" placeholder="Planificación Familiar">{{$motivoC->planificacion_familiar ?? old('planificacion_familiar')}}
-                        </textarea>
+                        <textarea class="form-control" aria-label="With textarea" name="planificacion_familiar" placeholder="Planificación Familiar">{{$motivoC->planificacion_familiar ?? old('planificacion_familiar')}}</textarea>
                     </div>
                 </div>
 
@@ -82,16 +81,14 @@
                 <div class="form-group ml-2 mr-2">
                     <label for="lugar_atencion">Motivo de Consulta</label>
                     <div class="input-group">
-                        <textarea class="form-control" aria-label="With textarea" name="descripcion_motivo" placeholder="Describa el Motivo de Consulta">{{$motivoC->descripcion_motivo ?? old('descripcion_motivo')}}
-                        </textarea>
+                        <textarea class="form-control" aria-label="With textarea" name="descripcion_motivo" placeholder="Describa el Motivo de Consulta">{{$motivoC->descripcion_motivo ?? old('descripcion_motivo')}}</textarea>
                     </div>
                 </div> 
                 
                 <div class="form-group ml-2 mr-2">
                   <label for="grupo_prioritario">Enfermedad o Problema actual</label>
                   <div class="input-group">
-                        <textarea class="form-control" aria-label="With textarea" name="descripcion_enfermedad" placeholder="Describa la Enfermedad o Problema actual">{{$motivoC->descripcion_enfermedad ?? old('descripcion_enfermedad')}}
-                        </textarea>
+                        <textarea class="form-control" aria-label="With textarea" name="descripcion_enfermedad" placeholder="Describa la Enfermedad o Problema actual">{{$motivoC->descripcion_enfermedad ?? old('descripcion_enfermedad')}}</textarea>
                     </div>
                 </div>
                 

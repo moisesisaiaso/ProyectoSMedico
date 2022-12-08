@@ -91,3 +91,21 @@ Route::get('/motivoConsulta/{motivoConsulta}/listar',[App\Http\Controllers\Motiv
 Route::resource('/motivoConsulta',App\Http\Controllers\MotivoCController::class, [
     'parameters'=> ['motivoConsulta'=>'motivoConsulta']
     ])->except(['create','index']); // esta forma de añadir un array multidimencional es una manera de cambiar el nombre a los parametros que vienen por defector en las rutas, en este caso existió un error especial ya que debería tener el mismo nombre del path cada parametro pero lo que se generaba era un nombre erroneo (mal escrito), con este array pude renombrar los nombres de los parametros en las rutas 
+
+
+
+//* Ruta paciente-SignosVitales
+//rutas añadidas
+Route::get('/signosVitales/{signosVitales}/create',[App\Http\Controllers\SignosVController::class, 'create'])->name('signosVitales.create');
+
+Route::get('/signosVitales/{signosVitales}/listar',[App\Http\Controllers\SignosVController::class, 'index'])->name('signosVitales.index');
+
+//ruta principal resource
+Route::resource('/signosVitales',App\Http\Controllers\SignosVController::class,  [
+    'parameters'=> ['signosVitales'=>'signosVitales']
+    ])->except(['create','index']);
+
+
+
+//todo:  La forma en que cada link del menú de navegación haga referencia al paciente es que cada vista del menú (create, listar , detalle) envía por sus acciones siempre el paciente id, de esta forma no importa en que apartado del menú estemos siempre pobremos acceder al $paciente. 
+//? siempre estamos enviando en las acciones del controlador el paciente, recuperandolo y volviendolo a enviar a las vistas que accedemos(esto es requerido tambien por que cada registro debe contener el id del paciente para hacer referencia al paciente que pertenece dicho registro)

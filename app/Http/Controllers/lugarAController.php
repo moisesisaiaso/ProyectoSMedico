@@ -70,7 +70,13 @@ class lugarAController extends Controller
 
         $lugarA->tipo_atencion = $request->tipo_atencion;
         $lugarA->lugar_atencion = $request->lugar_atencion;
-        $lugarA->grupo_prioritario	= implode(' ; ', $request->grupo_prioritario); // el metodo implode permite convertir un array elementos a un string //^ el primer argumento es un separador de los elementos y el segundo es el array
+
+        if(!empty($request->grupo_prioritario)){
+            $lugarA->grupo_prioritario	= implode(' ; ', $request->grupo_prioritario); // el metodo implode permite convertir un array elementos a un string //^ el primer argumento es un separador de los elementos y el segundo es el array
+
+        }else{
+            $lugarA->grupo_prioritario	= $request->grupo_prioritario;
+        }
 
         //*Guardo el objeto que contiene los datos 
         $lugarA->save();

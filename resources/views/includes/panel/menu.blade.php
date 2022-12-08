@@ -27,7 +27,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/login.html">
+            <a class="nav-link" href="{{route('signosVitales.create',['signosVitales'=>$paciente->id])}}">
               <i class="ni ni-sound-wave text-info"></i> Signos vitales
             </a>
           </li>

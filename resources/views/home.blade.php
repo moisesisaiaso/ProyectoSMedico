@@ -104,69 +104,80 @@
        <div class="table-responsive">
          <!-- Projects table -->
          <table class="table align-items-center table-flush">
-           <thead class="thead-light" height="43px">
-             <tr>
-               <th scope="col" colspan="3"></th>
-             </tr>
-           </thead>
-           <tbody>
+           
+           
+         @if(count($pacientes) == 0) <!-- Si $pacientes está vación muestra mensaje "no hay coincidencias" (para mostrar un mensaje cuando la busqueda no fue exitosa)-->
+           
+            <thead class="thead-light" height="43px">
+              <tr style= "text-align: center">
+                <th scope="col" class="text-warning"> Coincidencia no encontrada</th>
+              </tr>
+            </thead>
+            <tbody>
 
-           <!-- Itera -->
-           @foreach($pacientes as $paciente)
+         @else
+            <thead class="thead-light" height="43px">
+              <tr>
+                <th scope="col" colspan="3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Itera -->
+            @foreach($pacientes as $paciente)
 
-            <!-- //^ Logica para saber si un paciente se puede borrar o no por dependencia de datos y de esta forma permitir o no crear el boton "eliminar"
-            // ? aquí en PHP los nombres de propiedades están en "" como un objeto json, por este motivo no causará problemas acceder a sus propiedades con string -->
-                <?php
-                    $dependendientes = ['antecedentes','diagnosticos','examenesF','lugaresA','motivosC','signosV','tratamientos'];
+                <!-- //^ Logica para saber si un paciente se puede borrar o no por dependencia de datos y de esta forma permitir o no crear el boton "eliminar"
+                // ? aquí en PHP los nombres de propiedades están en "" como un objeto json, por este motivo no causará problemas acceder a sus propiedades con string -->
+                    <?php
+                        $dependendientes = ['antecedentes','diagnosticos','examenesF','lugaresA','motivosC','signosV','tratamientos'];
 
-                    $dependenciaConPacientes = false;
-                    foreach($dependendientes as $dependiente){
+                        $dependenciaConPacientes = false;
+                        foreach($dependendientes as $dependiente){
 
-                      if(count($paciente->$dependiente) != 0){
-                          $dependenciaConPacientes = true;
-                      }
-                    }
-          
-                ?>
+                          if(count($paciente->$dependiente) != 0){
+                              $dependenciaConPacientes = true;
+                          }
+                        }
+              
+                    ?>
+
+                @if($dependenciaConPacientes == false)
+                <tr> 
+                  <td style="padding: 16px 15px">
+                      <a href="{{route('paciente.show',['paciente'=>$paciente->id])}}" class="btn btn-sm btn-info" style="display: block">Entrar</a>
+                  </td>
+                  <td style="padding-left:0px; padding-right:0px">
+                      <a href="{{route('paciente.edit',['paciente'=>$paciente->id])}}" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
+                  </td>
+
+                  <td style="padding: 16px 15px; width: 20px">
+                      <form action="{{route('paciente.destroy',['paciente'=>$paciente->id])}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                          
+                          <button type="submit" class="btn btn-sm btn-default" style="display: block; width: 85px">Eliminar</button>
+                      </form>
+                    </td>
+                </tr>
+                @else
+              
+                <tr> 
+                  <td style="padding: 16px 15px">
+                      <a href="{{route('paciente.show',['paciente'=>$paciente->id])}}" class="btn btn-sm btn-info" style="display: block">Entrar</a>
+                  </td>
+                  <td style="padding-left:0px; padding-right:15px" colspan="2">
+                      <a href="{{route('paciente.edit',['paciente'=>$paciente->id])}}" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
+                  </td>
+                </tr>
+
+                  
+                @endif
+            @endforeach
+
+          @endif
                 
-            @if($dependenciaConPacientes == false)
-            <tr> 
-               <td style="padding: 16px 15px">
-                   <a href="{{route('paciente.show',['paciente'=>$paciente->id])}}" class="btn btn-sm btn-info" style="display: block">Entrar</a>
-               </td>
-               <td style="padding-left:0px; padding-right:0px">
-                   <a href="{{route('paciente.edit',['paciente'=>$paciente->id])}}" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
-               </td>
-
-               <td style="padding: 16px 15px; width: 20px">
-                  <form action="{{route('paciente.destroy',['paciente'=>$paciente->id])}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                      
-                      <button type="submit" class="btn btn-sm btn-default" style="display: block; width: 85px">Eliminar</button>
-                  </form>
-                </td>
-            </tr>
-            @else
-          
-            <tr> 
-               <td style="padding: 16px 15px">
-                   <a href="{{route('paciente.show',['paciente'=>$paciente->id])}}" class="btn btn-sm btn-info" style="display: block">Entrar</a>
-               </td>
-               <td style="padding-left:0px; padding-right:15px" colspan="2">
-                   <a href="{{route('paciente.edit',['paciente'=>$paciente->id])}}" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
-               </td>
-            </tr>
-
-               
-            @endif
-          @endforeach
-
-
-           </tbody>
-         </table>
-       </div>
-       
+            </tbody>
+          </table>
+        </div>
       </div> 
     </div> 
     <!-- Enlace vista de paginación personalizada:  https://laravel.com/docs/9.x/pagination#customizing-the-pagination-view-->

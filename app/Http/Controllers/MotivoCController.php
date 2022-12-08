@@ -13,6 +13,12 @@ class MotivoCController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth'); // este middleware me permite mantener mis rutas protegidas es decir solo podràn acceder a las vistas los usuarios autenticados
+    }
+    
     public function index($id)
     {
         //? encuentro el paciente
@@ -71,7 +77,7 @@ class MotivoCController extends Controller
 
         //? redireccion hacie la lista una vez creado un nuevo registro
         return redirect()->route('motivoConsulta.index',['motivoConsulta'=>$request->paciente_id])
-        ->with('status','Motivo de Consulta creado exitosamente');
+        ->with('status','Registro creado exitosamente');
     }
 
     /**
@@ -129,7 +135,7 @@ class MotivoCController extends Controller
 
         //? redireccion hacie la lista una vez creado un nuevo registro
         return redirect()->route('motivoConsulta.index',['motivoConsulta'=>$request->paciente_id])
-        ->with('status','Motivo de Consulta editado exitosamente');
+        ->with('status','Registro editado exitosamente');
     }
 
     /**

@@ -104,9 +104,14 @@
            <!-- Itera -->
            @foreach($lugaresA as $i => $lugarA)
              
-            @if($i < 4)<!-- esta condición me permite agrandar el ultimo tr de las acciones cuando hay 5 registros, esto por que al haber mas la tabla de "lugares" se alarga mientras que en "acciones" un un descompenso, de esta forma igualamos la altura con la tabla de acciones -->
+               @if($i < 4)<!-- esta condición me permite agrandar el ultimo tr de las acciones cuando hay 5 registros, esto por que al haber mas la tabla de "lugares" se alarga mientras que en "acciones" un un descompenso, de esta forma igualamos la altura con la tabla de acciones -->
+                <tr>
+
+               @else
+                 <tr style="height: 78px !important">  <!-- //OPCIONAL //* estos estilos nos permiten ampliar el ultimo tr para poder alinearse con la tabla "lugares A" por el desbordamiento que se genere en el campo "grupos prioritarios" -->
+                
+               @endif 
             
-            <tr> 
                <td style="padding: 16px 10px">
                    <a href="" class="btn btn-sm btn-info" style="display: block">Entrar</a>
                </td>
@@ -114,34 +119,49 @@
                    <a href="{{route('lugarAtencion.edit',['lugarAtencion'=>$lugarA->id])}}" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
                </td>
 
-               <td style="padding: 16px 10px; width: 20px">
-                  <form action="{{route('lugarAtencion.destroy',['lugarAtencion'=>$lugarA->id])}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                      
-                      <button type="submit" class="btn btn-sm btn-default" style="display: block">Eliminar</button>
-                  </form>
-                </td>
-            </tr>
-            @else
-            <tr style="height: 78px !important">  <!-- //OPCIONAL //* estos estilos son permiten ampliar el ultimo tr para poder alinearse con la tabla "lugares A" por el desbordamiento que se genere en el campo "grupos prioritarios" -->
-               <td style="padding: 16px 10px">
-                   <a href="" class="btn btn-sm btn-info" style="display: block">Entrar</a>
-               </td>
-               <td style="padding-left:0px; padding-right:0px">
-                   <a href="{{route('lugarAtencion.edit',['lugarAtencion'=>$lugarA->id])}}" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
-               </td>
 
+               <!-- //* eliminar con modal -->
                <td style="padding: 16px 10px; width: 20px">
-                  <form action="{{route('lugarAtencion.destroy',['lugarAtencion'=>$lugarA->id])}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                      
-                      <button type="submit" class="btn btn-sm btn-default" style="display: block">Eliminar</button>
-                  </form>
-                </td>
+                  <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-sm btn-default" style="display: block" data-toggle="modal" data-target="#exampleModal">
+                      Eliminar
+                    </button>
+               </td>
             </tr>
-            @endif
+            <!-- // ? MODAL  -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">
+                      Advertencia!
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Está seguro que desea eliminar este registro?
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                      <form action="{{route('lugarAtencion.destroy',['lugarAtencion'=>$lugarA->id])}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                          
+                          <button type="submit" class="btn btn-warning">
+                            Sí, Eliminar
+                          </button>
+                      </form>
+          
+                  </div>
+                </div>
+              </div>
+            </div>   
+
+               
+            
 
           @endforeach
 

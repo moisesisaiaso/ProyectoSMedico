@@ -21,6 +21,9 @@ class CreateSignosvTable extends Migration
             $table->string('presionArD', 255)->nullable();
             $table->string('presionArM', 255)->nullable();
             $table->string('temperatura', 255)->nullable();
+            $table->string('frecuenciaRes', 255)->nullable();
+            $table->string('frecuenciaCar', 255)->nullable();
+            $table->string('saturacionOxi', 255)->nullable();
             $table->string('peso', 255)->nullable();
             $table->string('talla', 255)->nullable();
             $table->string('iMC', 255)->nullable();

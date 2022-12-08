@@ -34,6 +34,7 @@ class HomeController extends Controller
             // con el paginate secciono esa petición por paginas distintas
         }
        
+    
 
         return view('home',[
             'pacientes'=>$pacientes,  
