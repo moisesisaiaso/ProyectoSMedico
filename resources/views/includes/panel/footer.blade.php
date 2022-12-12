@@ -21,8 +21,11 @@
           <div class="copyright text-muted" style="text-align: center; font-size: 14px">
           DESARROLLADO POR  <strong>ORTIZ GRACIA MOISES</strong>
           </div>
-           <a href="#" class="" style="color: #11cdef">
-           teléf. 0969718160
+          <a href="https://mail.google.com/mail/u/0/?hl=es#inbox?compose=GTvVlcSHvbDswDRLBbHkTvVLgKVpBZtsTwkDCCJVnbbbbVlqsGkpnRdWcwSFrrWXvwBqHQfGRbvCL" style="color: gray">
+          moisesisaias23mar@gmail.com         
+          </a> <br/>
+          <a href="#" style="color: #11cdef">
+          teléf. 0969718160
           </a>
         </div>
 </footer>

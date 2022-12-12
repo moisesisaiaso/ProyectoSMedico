@@ -167,35 +167,36 @@
                <!-- //* eliminar con modal -->
                <td style="padding: 16px 10px; width: 20px">
                   <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-sm btn-default" style="display: block" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-sm btn-default" style="display: block" data-toggle="modal" data-target="#eliminarModal" data-id="{{$signoV->id}}"> <!-- data- es atributo que me permite enviar una variable al modal para poder ser accedida en ete caso envío la variable data-id -->
                       Eliminar
                     </button>
                </td>
             </tr>
             <!-- // ? MODAL  -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLabel">
-                      Advertencia!
+                    <h5 class="modal-title text-warning" id="exampleModalLabel">
+                    Advertencia!!  Se va a eliminar el registro
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-            
-                    Está seguro que desea eliminar este registro?
+                    
+                  ¿Está seguro que desea eliminar este registro?
+                    
                   </div>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                        
                       
-                      <form action="{{route('signosVitales.destroy',['signosVitales'=>$signoV->id])}}" method="POST">
+                      <form action="{{route('signosVitales.destroy',1)}}"  data-action="{{route('signosVitales.destroy',1)}}" method="POST" id="form-delete">
                         @csrf
                         @method('DELETE')
-                          
+                           
                           <button type="submit" class="btn btn-warning">
                             Sí, Eliminar
                           </button>
@@ -207,6 +208,8 @@
               </div>
             </div>   
 
+            <!-- // *Script para modal-delete -->
+            <script src="{{asset('js/modal-delete.js')}}"> </script>
            
           @endforeach
 
@@ -222,3 +225,4 @@
     </div>
 </div>
 @endsection
+

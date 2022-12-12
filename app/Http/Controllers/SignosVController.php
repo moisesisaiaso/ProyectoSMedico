@@ -195,6 +195,8 @@ class SignosVController extends Controller
      */
     public function destroy($id)
     {
+
+       
         //? obtengo el registro a eliminar
         $signoV = SignoV::find($id);
 
