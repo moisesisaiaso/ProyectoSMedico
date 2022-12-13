@@ -72,6 +72,9 @@
     <div class="header bg-gradient-primary-change pb-8 pt-4 pt-md-6">
       
     </div>
+    <!-- librerias para modal-delete necesarias, deben ser definidas antes del 'content' -->
+    @yield('modal-delete')  
+
     <div class="container-fluid mt--7">
       @yield('content')
       <!-- Footer -->

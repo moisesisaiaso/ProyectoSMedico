@@ -1,6 +1,12 @@
 @extends('layouts.panelBasic')
 @section('title', 'home')
 
+@section('modal-delete')
+<!-- bibliotecas de jquery y booststrap necesarias para el modal, deben estar ubicadas antes del contenido para que funcione -->
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+@endsection
+
 @section('content')
 <div class="row">
     <div class="col-md-12 mb-4">
@@ -149,15 +155,15 @@
                       <a href="{{route('paciente.edit',['paciente'=>$paciente->id])}}" class="btn btn-sm btn-success" style="display: block">Actualizar</a>
                   </td>
 
+                  <!-- //* eliminar con modal -->
                   <td style="padding: 16px 15px; width: 20px">
-                      <form action="{{route('paciente.destroy',['paciente'=>$paciente->id])}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                          
-                          <button type="submit" class="btn btn-sm btn-default" style="display: block; width: 85px">Eliminar</button>
-                      </form>
-                    </td>
+                      <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-sm btn-default" style="display: block" data-toggle="modal" data-target="#eliminarModal" data-id="{{$paciente->id}}"> <!-- data- es atributo que me permite enviar una variable al modal para poder ser accedida en ete caso envío la variable data-id -->
+                          Eliminar
+                        </button>
+                  </td>
                 </tr>
+
                 @else
               
                 <tr> 
@@ -171,6 +177,45 @@
 
                   
                 @endif
+
+                <!-- // ? MODAL  -->
+            <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-warning" id="exampleModalLabel">
+                    Advertencia!!  Se va a eliminar el registro
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    
+                  ¿Está seguro que desea eliminar este registro?
+                    
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                       
+                      
+                      <form action="{{route('paciente.destroy',1)}}"  data-action="{{route('paciente.destroy',1)}}" method="POST" id="form-delete">
+                        @csrf
+                        @method('DELETE')
+                           
+                          <button type="submit" class="btn btn-warning">
+                            Sí, Eliminar
+                          </button>
+                      </form>
+                     
+          
+                  </div>
+                </div>
+              </div>
+            </div>   
+
+            <!-- // *Script para modal-delete -->
+            <script src="{{asset('js/modal-delete.js')}}"> </script>
             @endforeach
 
           @endif
