@@ -1,9 +1,6 @@
 @extends('layouts.panel')
 @section('title', 'paciente')
 
-@section('styles')
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-@endsection
 
 @section('content')
 
@@ -100,9 +97,4 @@
     </div>
   </div>
 </div>
-@endsection
-
-@section('scripts')
-  <!-- script para campo select multiple de create lugarA -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 @endsection

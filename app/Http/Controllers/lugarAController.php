@@ -134,6 +134,10 @@ class lugarAController extends Controller
         //* obtengo el registro que se va a actualizar
         $lugarA = LugarA::find($id);
 
+        //* se actualiza el usuario (Doctor) (esto si acaso el doctor es otro)
+        $user = \Auth::user();
+
+        $lugarA->user_id = $user->id;
         
         //? reasigno los nuevos datos a los campos del objeto(registro)
         $lugarA->tipo_atencion = $request->tipo_atencion;

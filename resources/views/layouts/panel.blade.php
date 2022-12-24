@@ -19,7 +19,9 @@
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
   
-  @yield('styles')
+
+  
+  @yield('styles') <!-- Estilos para el select multiple de "lugar de atención" -->
 
 </head>
 
@@ -136,7 +138,7 @@
     
     <!-- librerias para modal-delete necesarias, deben ser definidas antes del 'content' -->
     <!-- esta librería tambien nos sirve para el campo multiple select de la vista create(lugarA) -->
-    @yield('modal-delete')  
+    @include('includes.panel.menuDesplegable-modalDelete')  
     
     <div class="container-fluid mt--7">
       @yield('content')
@@ -149,8 +151,8 @@
   </div>
   
   <!--   Core   -->
-  <script src="{{asset('js/plugins/jquery/dist/jquery.min.js')}}"></script>
-  <script src="{{asset('js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  
+
   <!--   Optional JS   -->
   <script src="{{asset('js/plugins/chart.js/dist/Chart.min.js')}}"></script>
   <script src="{{asset('js/plugins/chart.js/dist/Chart.extension.js')}}"></script>

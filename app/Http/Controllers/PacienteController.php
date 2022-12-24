@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Paciente;
+use App\Models\User;
 
 class PacienteController extends Controller
 {
@@ -153,6 +154,12 @@ class PacienteController extends Controller
         //Obtenemos el paciente que se va a actualizar
         $paciente = Paciente::find($id);
         //Obtenemos los valores que vienen por request desde el formulario y los asignamos a los campos del usuario a actualizar, esto lo que hace es como reasignar nuevos valores
+
+        //* se actualiza el usuario (Doctor) (esto si acaso el doctor es otro)
+        $user = \Auth::user();
+
+        $paciente->user_id = $user->id;
+
         $paciente->name = $request->name; 
         $paciente->historiaClinica = $request->input('historiaClinica')	;
         $paciente->sexo = $request->sexo;
@@ -210,7 +217,14 @@ class PacienteController extends Controller
         
         $paciente = Paciente::where('historiaClinica', $historiaClinica)->first(); // con esta instrucción me devuelve un registro de la tabla paciente haciendo referencia a un campo de su entidad y el valor del campo con el que se hará la busqueda
 
-        return redirect()->route('paciente.show',['paciente'=>$paciente->id]);
+        if($paciente){
+            
+            return redirect()->route('paciente.show',['paciente'=>$paciente->id]);
+        }else{
+            
+            return redirect()->route('home')->with('status2','Paciente no encontrado, busque por coincidencia');
+        }
+
     }
     
 

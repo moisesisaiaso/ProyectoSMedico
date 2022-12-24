@@ -165,7 +165,7 @@
 </div>
 @endsection
 
-@section('scripts')
+@section('scripts') <!-- Escript para campo fecha Naciemiento -->
 
 <script src="{{asset('js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 

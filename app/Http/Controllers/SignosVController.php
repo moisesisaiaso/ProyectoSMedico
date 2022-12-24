@@ -159,6 +159,12 @@ class SignosVController extends Controller
          //* obtengo el registro que se va a actualizar
          $signoV = SignoV::find($id);
 
+         //* se actualiza el usuario (Doctor) (esto si acaso el doctor es otro)
+         $user = \Auth::user();
+
+         $signoV->user_id = $user->id;
+
+
         //? reasigno los nuevos datos a los campos del objeto (el registro)
 
         $signoV->presionArS = $request->presionArS;

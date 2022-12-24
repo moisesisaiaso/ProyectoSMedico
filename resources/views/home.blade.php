@@ -1,11 +1,6 @@
 @extends('layouts.panelBasic')
 @section('title', 'home')
 
-@section('modal-delete')
-<!-- bibliotecas de jquery y booststrap necesarias para el modal, deben estar ubicadas antes del contenido para que funcione -->
-      <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
-@endsection
 
 @section('content')
 <div class="row">
@@ -27,6 +22,18 @@
                         </button>
                   </div>
             
+              @elseif((session('status2')))
+                  <div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+                        <span class="alert-icon">
+                          <i class="ni ni-bell-55"></i>
+                        </span>
+                        <span class="alert-text"><strong>Fallido! </strong>{{ session('status2') }}
+                        </span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                  </div>
+
               @else
                 {{ __('Esta es la lista de pacientes existentes!') }}
               @endif

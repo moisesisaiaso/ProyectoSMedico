@@ -123,6 +123,11 @@ class MotivoCController extends Controller
         //* obtengo el registro que se va a actualizar
         $motivoC = MotivoC::find($id);
 
+        //* se actualiza el usuario (Doctor) (esto si acaso el doctor es otro)
+        $user = \Auth::user();
+
+        $motivoC->user_id = $user->id;
+
         
         //? reasigno los nuevos datos a los campos del objeto(registro)
         $motivoC->planificacion_familiar = $request->planificacion_familiar;

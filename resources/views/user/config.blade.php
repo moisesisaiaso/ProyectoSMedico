@@ -1,6 +1,7 @@
 @extends('layouts.panelBasic')
 @section('title', 'configuracion')
 
+
 @section('content')
 
 <div class="row">

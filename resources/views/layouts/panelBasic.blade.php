@@ -20,6 +20,7 @@
 </head>
 
 <body class="">
+  
   <div class="main-content">
     <!-- Navbar -->
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
@@ -49,6 +50,7 @@
             </div>
           </form>
         @endif
+        
         <!-- User  para escritorio-->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
           <li class="nav-item dropdown">
@@ -69,21 +71,24 @@
     </nav>
     <!-- End Navbar -->
     <!-- Header -->
+    
     <div class="header bg-gradient-primary-change pb-8 pt-4 pt-md-6">
+      
       
     </div>
     <!-- librerias para modal-delete necesarias, deben ser definidas antes del 'content' -->
-    @yield('modal-delete')  
+    @include('includes.panel.menuDesplegable-modalDelete') 
 
+    
     <div class="container-fluid mt--7">
+      
       @yield('content')
       <!-- Footer -->
       @include('includes.panel.footer')
     </div>
   </div>
   <!--   Core   -->
-  <script src="{{asset('js/plugins/jquery/dist/jquery.min.js')}}"></script>
-  <script src="{{asset('js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  
   <!--   Optional JS   -->
   <script src="{{asset('js/plugins/chart.js/dist/Chart.min.js')}}"></script>
   <script src="{{asset('js/plugins/chart.js/dist/Chart.extension.js')}}"></script>
@@ -95,8 +100,8 @@
   <script src="{{asset('js/argon-dashboard.min.js?v=1.1.2')}}"></script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   </script> 
-  <script>
 
+  <script>
     window.TrackJS &&
       TrackJS.install({
         token: "ee6fab19c5a04ac1a32a645abde4613a",

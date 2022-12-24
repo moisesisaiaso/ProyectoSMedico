@@ -29,7 +29,7 @@
  
 
   
-  list($fechaUpdated,$horaUpdated) = explode(' ',$signoV->updated_at);
+  list($fechaUpdated,$horaUpdated) = explode(' ',$signoV->updated_at); // saco fecha y hora en variables distintas
   $doctor = $doctor->name;
 
        
@@ -42,7 +42,7 @@
     </div>
 
     @if($horaCreated != $horaUpdated)
-    <div>Fecha de actualización: {{$fechaCreated}} 
+    <div>Fecha de actualización: {{$fechaUpdated}} 
         <div style="font-size: 15px">Dr. {{$doctor}}</div>
     </div>
     @endif
@@ -52,61 +52,65 @@
     </a>
 </div>
 
-<div style="width: 37rem;">
+<div class="row mt-2" >
+    <div class="col-xl-9 mb-5 mb-xl-0">
+        <div style="width: 37rem;">
 
-    <div class="card card-stats">   
-        <!-- Card body -->
-        <div class="card-body">
-            
-            <div class="row">
-                <div class="col">
-                    <h5 class="card-title text-uppercase text-muted mb-0">Presión arterial S</h5>
-                    <span class="h2 font-weight-bold mb-0">{{$signoV->presionArS}}  mmHg</span>
-                </div>
+            <div class="card card-stats">   
+                <!-- Card body -->
+                <div class="card-body">
+                    
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Presión arterial S</h5>
+                            <span class="h2 font-weight-bold mb-0">{{$signoV->presionArS}}  mmHg</span>
+                        </div>
 
-                <div class="col">
-                    <h5 class="card-title text-uppercase text-muted mb-0">Presión arterial D</h5>
-                    <span class="h2 font-weight-bold mb-0">{{$signoV->presionArD}}  mmHg</span>
-                </div>
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Presión arterial D</h5>
+                            <span class="h2 font-weight-bold mb-0">{{$signoV->presionArD}}  mmHg</span>
+                        </div>
 
-                <div class="col">
-                    <h5 class="card-title text-uppercase text-muted mb-0">Presión arterial M</h5>
-                    <span class="h2 font-weight-bold mb-0">{{$signoV->presionArM}}  mmHg</span>
-                </div>
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Presión arterial M</h5>
+                            <span class="h2 font-weight-bold mb-0">{{$signoV->presionArM}}  mmHg</span>
+                        </div>
 
-                <div class="col-auto">
-                <div class="icon icon-shape bg-orange text-white rounded-circle shadow">
-                    <i class="ni ni-favourite-28"></i>
-                </div>
-                </div>
+                        <div class="col-auto">
+                        <div class="icon icon-shape bg-orange text-white rounded-circle shadow">
+                            <i class="ni ni-favourite-28"></i>
+                        </div>
+                        </div>
 
-                <div class="row" style="min-width: 29rem;">
-                    <div class="mt-3 mb-0 text-sm col ml-3  text-success">
-                        <div>
-                            <i class="ni ni-check-bold"></i>
-                            <span class="text-nowrap">adecuado</span>
+                        <div class="row" style="min-width: 29rem;">
+                            <div class="mt-3 mb-0 text-sm col ml-3  text-success">
+                                <div>
+                                    <i class="ni ni-check-bold"></i>
+                                    <span class="text-nowrap">adecuado</span>
+                                </div>
+                            </div>
+                
+                            <div class="mt-3 mb-0 text-sm col ml-5  text-success">
+                                <div>
+                                    <i class="ni ni-check-bold"></i>
+                                    <span class="text-nowrap">adecuado</span>
+                                </div>
+                            </div>
+                
+                            <div class="mt-3 mb-0 text-sm col ml-5 text-warning">
+                                <div>
+                                    <i class="ni ni-fat-add"></i>
+                                    <span class="text-nowrap">peligroso</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-        
-                    <div class="mt-3 mb-0 text-sm col ml-5  text-success">
-                        <div>
-                            <i class="ni ni-check-bold"></i>
-                            <span class="text-nowrap">adecuado</span>
-                        </div>
-                    </div>
-        
-                    <div class="mt-3 mb-0 text-sm col ml-5 text-warning">
-                        <div>
-                            <i class="ni ni-fat-add"></i>
-                            <span class="text-nowrap">peligroso</span>
-                        </div>
-                    </div>
+
                 </div>
+
             </div>
 
         </div>
-
     </div>
-
 </div>
 @endsection

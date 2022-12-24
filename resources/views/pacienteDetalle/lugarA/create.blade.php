@@ -1,38 +1,12 @@
 @extends('layouts.panel')
 @section('title', 'paciente')
 
-@section('modal-delete')
-<!-- bibliotecas de jquery y booststrap necesarias para el campo multiple select -->
-      <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
-@endsection
 
-@section('styles')
+@section('styles') <!-- estilos del campo multi select -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 @endsection
 
 @section('content')
-
-<!-- <div class="row">
-    <div class="col-md-12 mb-5">
-        <div class="card">
-            
-
-            <div class="card-body" style="display: flex; justify-content: space-between">
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
-                <div> EDITAR LUGAR A</div>
-                <a class="h4 mb-0 text-default text-uppercase d-none d-lg-inline-block" style="margin-left: 40px justify-content: end" href="{{route('home')}}">
-                  <i class="fas fa-notes-medical" style="font-size: 24px"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 
 <div class="row">
