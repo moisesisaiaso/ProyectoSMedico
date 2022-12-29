@@ -150,7 +150,7 @@
                     
                   </div>
                   <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                        
                       
                       <form action="{{route('motivoConsulta.destroy',1)}}"  data-action="{{route('motivoConsulta.destroy',1)}}" method="POST" id="form-delete">

@@ -34,6 +34,18 @@
 
        
 ?>
+
+<div class="card-body" style="display: flex; justify-content: space-between">
+    <div>
+        <a href="{{route('signosVitales.edit',['signosVitales'=>$signoV->id])}}" class="btn btn-outline-default">Editar Datos</a>  
+    </div>
+
+
+    <a class="h4 mb-0 text-default text-uppercase d-none d-lg-inline-block" style="margin-left: 40px justify-content: end" href="{{route('signosVitales.index',['signosVitales'=>$paciente->id])}}">
+        <i class="ni ni-bold-left" style="font-size: 24px"></i>
+    </a>
+</div>
+
 <div class="card-body" style="display: flex; justify-content: space-between">
     <div>Fecha de creación: {{$fechaCreated}} 
         @if($horaCreated == $horaUpdated)
@@ -46,70 +58,67 @@
         <div style="font-size: 15px">Dr. {{$doctor}}</div>
     </div>
     @endif
-
-    <a class="h4 mb-0 text-default text-uppercase d-none d-lg-inline-block" style="margin-left: 40px justify-content: end" href="{{route('signosVitales.index',['signosVitales'=>$paciente->id])}}">
-        <i class="ni ni-bold-left" style="font-size: 24px"></i>
-    </a>
+    
 </div>
 
-<div class="row mt-2" >
-    <div class="col-xl-9 mb-5 mb-xl-0">
-        <div style="width: 37rem;">
+<div class="card-body pt-0" style="display: flex; justify-content: space-between">
+    <div>
+        <div class="col-xl-13 mb-5 mb-xl-0 row">
+            <div>
 
-            <div class="card card-stats">   
-                <!-- Card body -->
-                <div class="card-body">
-                    
-                    <div class="row">
-                        <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Presión arterial S</h5>
-                            <span class="h2 font-weight-bold mb-0">{{$signoV->presionArS}}  mmHg</span>
-                        </div>
-
-                        <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Presión arterial D</h5>
-                            <span class="h2 font-weight-bold mb-0">{{$signoV->presionArD}}  mmHg</span>
-                        </div>
-
-                        <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Presión arterial M</h5>
-                            <span class="h2 font-weight-bold mb-0">{{$signoV->presionArM}}  mmHg</span>
-                        </div>
-
-                        <div class="col-auto">
-                        <div class="icon icon-shape bg-orange text-white rounded-circle shadow">
-                            <i class="ni ni-favourite-28"></i>
-                        </div>
-                        </div>
-
-                        <div class="row" style="min-width: 29rem;">
-                            <div class="mt-3 mb-0 text-sm col ml-3  text-success">
+                <div class="card card-stats">   
+                    <!-- Card body -->
+                    <div class="card-body">
+                        
+                        <div class="row">
+                            <div class="col-auto">
                                 <div>
-                                    <i class="ni ni-check-bold"></i>
-                                    <span class="text-nowrap">adecuado</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Presión arterial S</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{$signoV->presionArS}}  mmHg</span>
+                                </div>
+
+                                <div class="mt-3 mb-0 text-sm col-auto  text-success">
+                                    <div>
+                                        <i class="ni ni-check-bold"></i>
+                                        <span >adecuado</span>
+                                    </div>
                                 </div>
                             </div>
-                
-                            <div class="mt-3 mb-0 text-sm col ml-5  text-success">
+
+                            <div class="col-auto">
                                 <div>
-                                    <i class="ni ni-check-bold"></i>
-                                    <span class="text-nowrap">adecuado</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Presión arterial D</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{$signoV->presionArD}}  mmHg</span>
+                                </div>
+
+                                <div class="mt-3 mb-0 text-sm col-auto   text-success">
+                                    <div>
+                                        <i class="ni ni-check-bold"></i>
+                                        <span >adecuado</span>
+                                    </div>
                                 </div>
                             </div>
-                
-                            <div class="mt-3 mb-0 text-sm col ml-5 text-warning">
+
+                            <div class="col-auto">
                                 <div>
-                                    <i class="ni ni-fat-add"></i>
-                                    <span class="text-nowrap">peligroso</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Presión arterial M</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{$signoV->presionArM}}  mmHg</span>
+                                </div>
+                                
+                                <div class="mt-3 mb-0 text-sm col-auto  text-warning">
+                                    <div>
+                                        <i class="ni ni-fat-add"></i>
+                                        <span >peligroso</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
 
                 </div>
 
             </div>
-
         </div>
     </div>
 </div>

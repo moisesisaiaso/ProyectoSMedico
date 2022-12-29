@@ -58,12 +58,12 @@
             <div class="row mt-2 flex-grow-1" >
                 <div class="form-group flex-grow-1 ml-2 mr-2">
                     <label for="name">Nombre del Paciente</label>
-                    <input type="text" name="name" class="form-control" value="{{$paciente->name ?? old('name')}}"> <!-- old('name') es un metodo que permite mantener la permanencia de los datos ingresados en los campos cuando se envía el formulario y existe un ERROR DE VALIDACIÓN-->
+                    <input type="text" name="name" class="form-control" value="{{$paciente->name ?? old('name')}}" placeholder="Ingrese el nombre"> <!-- old('name') es un metodo que permite mantener la permanencia de los datos ingresados en los campos cuando se envía el formulario y existe un ERROR DE VALIDACIÓN-->
                 </div>
     
                 <div class="form-group flex-grow-1 ml-2 mr-2">
                     <label for="historiaClinica">N°Cédula</label>
-                    <input type="text" name="historiaClinica" class="form-control" value="{{$paciente->historiaClinica ?? old('historiaClinica')}}" required>
+                    <input type="text" name="historiaClinica" class="form-control" value="{{$paciente->historiaClinica ?? old('historiaClinica')}}" required placeholder="ingrese la cédula">
                 </div>
 
                 <div class="form-group flex-grow-1 ml-2 mr-2">
@@ -121,15 +121,15 @@
                 </div>
                 <div class="form-group flex-grow-1 ml-2 mr-2">
                     <label for="edad">Edad</label>
-                    <input type="text" name="edad" class="form-control" value="{{$paciente->edad ?? old('edad')}}">
+                    <input type="text" name="edad" class="form-control" value="{{$paciente->edad ?? old('edad')}}" placeholder="Ingrese la edad">
                 </div>
                 <div class="form-group flex-grow-1 ml-2 mr-2">
                     <label for="peso">Peso</label>
-                    <input type="text" name="peso" class="form-control" value="{{$paciente->peso ?? old('peso')}}">
+                    <input type="text" name="peso" class="form-control" value="{{$paciente->peso ?? old('peso')}}" placeholder="Kg">
                 </div>
                 <div class="form-group flex-grow-1 ml-2 mr-2">
                     <label for="talla">Talla</label>
-                    <input type="text" name="talla" class="form-control" value="{{$paciente->talla ?? old('talla')}}">
+                    <input type="text" name="talla" class="form-control" value="{{$paciente->talla ?? old('talla')}}" placeholder="cm">
                 </div>
                 
 
@@ -149,11 +149,11 @@
 
                 <div class="form-group flex-grow-1 ml-2 mr-2">
                     <label for="indiceMC">Indice de Masa Corporal </label>
-                    <input type="text" name="indiceMC" class="form-control" value="{{$paciente->indiceMC ?? old('indiceMC')}}">
+                    <input type="text" name="indiceMC" class="form-control" value="{{$paciente->indiceMC ?? old('indiceMC')}}" placeholder="Kg/m">
                 </div>
                 <div class="form-group flex-grow-1 ml-2 mr-2">
                     <label for="presionArterial">Presión Arterial</label>
-                    <input type="text" name="presionArterial" class="form-control" value="{{$paciente->presionArterial ?? old('presionArterial')}}">
+                    <input type="text" name="presionArterial" class="form-control" value="{{$paciente->presionArterial ?? old('presionArterial')}}" placeholder="mm">
                 </div>
             </div>
 
