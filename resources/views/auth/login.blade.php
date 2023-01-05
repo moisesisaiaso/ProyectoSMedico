@@ -50,7 +50,7 @@
                 <div class="custom-control custom-control-alternative custom-checkbox">
                   <input name="remember" class="custom-control-input" id="remember" type="checkbox" value= "{{ old('remember') ? 'checked' : '' }}">
                   <label class="custom-control-label" for="remember">
-                    <span class="text-muted">Recordad sesion</span>
+                    <span class="text-muted">Recordar sesion</span>
                   </label>
                 </div>
                 <div class="text-center">

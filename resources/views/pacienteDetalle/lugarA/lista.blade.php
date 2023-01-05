@@ -114,7 +114,7 @@
                @endif 
             
                   <td style="padding: 16px 10px">
-                      <a href="" class="btn btn-sm btn-info" style="display: block">Entrar</a>
+                      <a href="{{route('lugarAtencion.show',['lugarAtencion'=>$lugarA->id])}}" class="btn btn-sm btn-info" style="display: block">Entrar</a>
                   </td>
                   <td style="padding-left:0px; padding-right:0px">
                       <a href="{{route('lugarAtencion.edit',['lugarAtencion'=>$lugarA->id])}}" class="btn btn-sm btn-success" style="display: block">Actualizar</a>

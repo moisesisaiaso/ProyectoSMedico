@@ -65,15 +65,21 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 \***\*---RECURSOS OPCIONALES PARA ESCALABILIDAD DEL PROYECTO---\*\***
 
+## --
+
 -𝗘𝗻𝗹𝗮𝗰𝗲 𝗱𝗲𝗹 𝗦𝗶𝘁𝗶𝗼 𝗱𝗲 𝗹𝗮 𝗣𝗹𝗮𝗻𝘁𝗶𝗹𝗹𝗮: https://demos.creative-tim.com/argon-dashboard/docs/components/buttons.html
 
 (Esto nos da una serie de componentes que podemos utilizar en nuestra plantilla así como clases para estilizar)
+
+## --
 
 // Crear migraciones automaticamente a partir de una base de datos existente: https://www.youtube.com/watch?v=baQNTofu7CI
 
 (esta tecnica facilita la creación de migraciones al no tener que ir deficinedo las tablas y sus estructuras de manera manual, tambien nos genera automaticamente las relaciones que existen con las diferentes entidades) en otras palabras (Esto nos va a permitir mantener versionada nuestra base de datos de modo que si queremos pasar el proyecto a otro computador o colaborador bastará con correr las migraciones)
 
 \***\*-----INSTRUCCIONES PARA EJECUTAR EL PROYECTO (SISTEMA MEDICO)-----\*\***
+
+## --
 
 //OBLIGATORIO
 
@@ -86,6 +92,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 1. )
 
+## --
+
 -   Conexión a la base de datos
 
 1. en el archivo .env cambiamos las credenciales para con nuestra información
@@ -97,6 +105,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
    DB_USERNAME=root
    DB_PASSWORD=moimariii
 
+## --
+
 -   Comandas para el sistema de autenticación (en el CMD)
 
 1. composer require laravel/ui
@@ -105,6 +115,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 -   Corremos las migraciones (en el CMD) (crea la tabla users y password para el sistema de auth)
 
 1. php artisan migrate
+
+## --
 
 OPCIONAL
 //PROBLEMAS AL EJECUTAR EL PROYECTO EN OTRO DISPOSITIVO
@@ -122,6 +134,8 @@ OPCIONAL
 
 1. composer require laravel/ui:\* (Esto instala la versión necesaria)
 
+## --
+
 OPCIONAL
 
 -   Volver a ejecutar las migraciones haciendo un fresh de las tablas(modelos)
@@ -129,6 +143,8 @@ OPCIONAL
 1. php artisan migrate:fresh
 2. o utilice este comando php artisan migrate:refresh
    (esto nos sirve para eliminar los datos de prueba o para solucionar algún error en las migraciones)
+
+## --
 
 OPCIONAL
 
@@ -154,15 +170,24 @@ OPCIONAL
 
 3. Si lo anterior no funcionó continue con Actualizar Mysql a versiones superiores de 5.0
 
+## --
+
 /**ERROR**/
 //otro problema puede ser cuando sale un error: ( Cannot declare class CreatePersonalAccessTokensTable, because the name is already in use):
 Este error puede suceder cuando hacemos un refresh o un fresh en las migraciones
 esto quiere decir que ya existe la clase de la migración y su metodo- (aunque en realidad no existe un duplicado) solución:
 
 1. Cambiamos el nombre del archivo de migracion que nos está causando problemas
-2. Cambiamos el nombre de su clase y el nombre del metodo
+2. Cambiamos el nombre de su clase y el nombre de la tabla en los metodos
 
-/****\*\*\*\*****UTILIDADES PARA ADMINISTRADOR******\*******/
+## --
+
+//OJO **\*\***
+Cuando modificamos tablas ya existentes con las migraciones, al migrar los datos se pueden borrar , para evitar esto es necesario que las actualizaciones o modificaciones sean echas desde una nueva migración. aquí el enlace para seguir los pasos (Modificar migraciones): https://styde.net/modificar-tablas-ya-existentes-con-las-migraciones-de-laravel/
+
+## --
+
+/\***\*\*\*\*\*\*\***UTILIDADES PARA ADMINISTRADOR**\*\***\***\*\***/
 
 -   Cambiar la contraseña del usuario mediante la línea de comandos (En el CMD)
 
@@ -173,3 +198,9 @@ esto quiere decir que ya existe la clase de la migración y su metodo- (aunque e
 4. Finalmente, llame al método save() de Eloquent ORM de la siguiente manera: $user->save();
 
 mas información: https://themewp.inform.click/es/como-cambiar-la-contrasena-del-usuario-en-laravel/
+
+## --
+
+-Acceso a los usuarios /\***\*\*\*\***/
+
+Por defecto los usuarios registrados no tendrán acceso a la aplicación, el administrador podrá darle acceso a través del cambio de status que es un campo de la tabla users, donde 0 representa a un usuario baneado o sin acceso, mientras que 1 permite el acceso. (Por ahora este cambio es manual con la base de datos)

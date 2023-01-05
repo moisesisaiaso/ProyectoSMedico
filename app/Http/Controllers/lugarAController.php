@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Paciente;
 use App\Models\LugarA;
+use App\Models\User;
 
 class lugarAController extends Controller
 {
@@ -99,7 +100,20 @@ class lugarAController extends Controller
     //? MOSTRAR DETALLE DE LUGAR-A 
     public function show($id)
     {
-        //
+        //? registro
+        $lugarA = LugarA::find($id);
+
+        //? paciente 
+        $paciente_id = $lugarA->paciente_id;
+        $paciente = Paciente::find($paciente_id);
+
+        //? doctor (creador o actualizador)
+        $doctor = User::find($lugarA->user_id);
+        return view('pacienteDetalle.lugarA.detalle',[
+            'lugarA'=>$lugarA,
+            'paciente'=>$paciente,
+            'doctor'=>$doctor
+        ]);
     }
 
     /**

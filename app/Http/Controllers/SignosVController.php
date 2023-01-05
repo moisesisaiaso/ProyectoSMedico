@@ -108,6 +108,8 @@ class SignosVController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //? MOSTRAR DETALLE DE  SIGNOS V
     public function show($id)
     {
         //? registro

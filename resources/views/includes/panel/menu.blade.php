@@ -32,12 +32,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/login.html">
+            <a class="nav-link" href="#">
               <i class="ni ni-bulb-61 text-success"></i> Diagnóstico
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/login.html">
+            <a class="nav-link" href="#">
               <i class="ni ni-ruler-pencil text-default"></i> Tratamiento
             </a>
           </li>
@@ -57,12 +57,12 @@
 <!-- Navigation -->
 <ul class="navbar-nav mb-md-3">
   <li class="nav-item">
-    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
+    <a class="nav-link" href="#">
       <i class="ni ni-favourite-28"></i>Examen físico
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
+    <a class="nav-link" href="#">
       <i class="ni ni-folder-17"></i> Resultado Examenes
     </a>
   </li>

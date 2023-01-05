@@ -52,7 +52,8 @@ $compatibilidad8->tipoSangre = "AB-";
 $compatibilidad8->da = "AB+, AB-";
 $compatibilidad8->recibe = "AB-, A-, B-, O-";
 
-$compatibilidades = [$compatibilidad1,$compatibilidad2,$compatibilidad3,$compatibilidad4,$compatibilidad5,$compatibilidad6,$compatibilidad7,$compatibilidad8]
+$compatibilidades = [$compatibilidad1,$compatibilidad2,$compatibilidad3,$compatibilidad4,$compatibilidad5,$compatibilidad6,$compatibilidad7,$compatibilidad8];
+
 
 ?>
 
